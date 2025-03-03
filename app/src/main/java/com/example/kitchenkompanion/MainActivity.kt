@@ -10,7 +10,6 @@ import com.google.android.material.tabs.TabLayout
 
 
 class MainActivity : AppCompatActivity() {
-
     // Source That I used
     // https://www.youtube.com/watch?v=obYxPd2ot7Q&ab_channel=CodeWithCal
     override fun onCreate(savedInstanceState: Bundle?)

@@ -6,6 +6,8 @@
     android:layout_columnWeight="10"
     android:scrollbarSize="10dp"
     android:scrollbarStyle="insideInset"
+    android:background="#FFC0CB"
+
     tools:context=".TextFragment">
 
 
