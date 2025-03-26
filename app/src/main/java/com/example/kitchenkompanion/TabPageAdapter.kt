@@ -16,8 +16,7 @@ class TabPageAdapter(activity: FragmentActivity, private val tabCount: Int) : Fr
             1 -> LRFragment()
             2 -> ColorsFragment()
             3 -> ProfileFragment()
-            4 ->ChoicesFragment()
-            5 -> ToDoFragment()
+
             else -> TextFragment()
         }
     }
