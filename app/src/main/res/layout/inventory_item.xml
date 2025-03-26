@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/item_image"
         android:layout_centerHorizontal="true"
-        android:text="Milk"
+        android:text="Mango"
         android:textSize="14sp"
         android:textStyle="bold"/>
 </RelativeLayout>
