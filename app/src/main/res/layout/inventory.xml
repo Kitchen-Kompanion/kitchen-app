@@ -5,14 +5,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="72dp"
     tools:context=".InventoryFragment">
 
-    <TextView
-        android:id="@+id/textViewExample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Inventory"
-        />
+    <!-- Search Bar -->
+    <EditText
+        android:id="@+id/search_inventory"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
+        android:hint="Search inventory..."
+        android:padding="8dp"
+
+        android:drawableStart="@android:drawable/ic_menu_search"/>
+
+    <!-- Scrollable Inventory List -->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_inventory"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- Dairy Category -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dairy Products"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:padding="4dp">
+
+                <include layout="@layout/inventory_item"/>
+                <include layout="@layout/inventory_item"/>
+                <include layout="@layout/inventory_item"/>
+            </GridLayout>
+
+            <!-- Fruits & Vegetables Category -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fruits"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:padding="4dp">
+
+                <include layout="@layout/inventory_item"/>
+                <include layout="@layout/inventory_item"/>
+                <include layout="@layout/inventory_item"/>
+            </GridLayout>
+
+            <!-- Pantry Items -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pantry Items"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:padding="4dp">
+
+                <include layout="@layout/inventory_item"/>
+                <include layout="@layout/inventory_item"/>
+                <include layout="@layout/inventory_item"/>
+            </GridLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
