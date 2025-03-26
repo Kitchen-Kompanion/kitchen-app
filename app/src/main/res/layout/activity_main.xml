@@ -26,24 +26,24 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/text"
-            android:text="Text"/>
+            android:icon="@drawable/home"
+            android:text="Home"/>
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/arrow"
-            android:text="LR"/>
+            android:icon="@drawable/inventory"
+            android:text="Inventory"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/colors"
-            android:text="Colors"/>
+            android:icon="@drawable/shopping"
+            android:text="Shopping"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/profile"
-            android:text="Profile"/>
+            android:icon="@drawable/recipies"
+            android:text="Recipies"/>
 
 
 
