@@ -18,7 +18,7 @@ A shallow prototype app to manage kitchen inventory, shopping lists, recipes, an
 - Enhance UI with animations and sound effects
 
 ## Team Members
-- **Home:** Robert Estan  
-- **Inventory:** Kyumin Hwang  
-- **Shopping List:** Sueun Cho  
-- **Recipes:** Brandon Chen
+- Robert Estan  
+- Kyumin Hwang  
+- Sueun Chon Cho  
+- Brandon Chen
