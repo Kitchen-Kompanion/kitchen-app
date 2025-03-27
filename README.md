@@ -20,5 +20,5 @@ A shallow prototype app to manage kitchen inventory, shopping lists, recipes, an
 ## Team Members
 - Robert Estan  
 - Kyumin Hwang  
-- Sueun Chon Cho  
+- Sueun Cho  
 - Brandon Chen
