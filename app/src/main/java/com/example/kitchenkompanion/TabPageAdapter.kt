@@ -12,11 +12,10 @@ class TabPageAdapter(activity: FragmentActivity, private val tabCount: Int) : Fr
     {
         return when (position)
         {
-            0 -> HomeFragment()
+            0 -> ShoppingFragment()
             1 -> InventoryFragment()
-            2 -> ShoppingFragment()
-            3 -> RecipesFragment()
-            else -> HomeFragment()
+            2 -> RecipesFragment()
+            else -> ShoppingFragment()
         }
     }
 
