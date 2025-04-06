@@ -1,5 +1,51 @@
 <resources>
     <string name="app_name">KitchenKompanion</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Shopping list strings -->
+    <string name="shopping_list_title">Kitchen Kompanion</string>
+    <string name="items_count">Items: 10</string>
+    <string name="items_count_format">Items: %1$d</string>
+    <string name="shopping_instructions">Check items as you add them to your cart. Track your shopping progress below.</string>
+    <string name="my_shopping_list">My Shopping List</string>
+
+    <!-- Item names -->
+    <string name="melon">Melon</string>
+    <string name="soup">Soup</string>
+    <string name="mango">Mango</string>
+    <string name="banana">Banana</string>
+
+    <!-- Quantities -->
+    <string name="quantity_1">Qty: 1</string>
+    <string name="quantity_3">Qty: 3</string>
+    <string name="quantity_three">Qty: 3</string>
+
+    <!-- Prices -->
+    <string name="price_melon">$15.99</string>
+    <string name="price_soup">$4.50</string>
+    <string name="price_mango">$3.99</string>
+    <string name="price_banana">$2.99</string>
+    <string name="total_price">$27.47</string>
+
+    <!-- Image descriptions -->
+    <string name="melon_image_description">Image of a melon</string>
+    <string name="soup_image_description">Image of soup</string>
+    <string name="mango_image_description">Image of a mango</string>
+    <string name="banana_image_description">Image of bananas</string>
+
+    <!-- Summary section -->
+    <string name="shopping_summary">Shopping Summary</string>
+    <string name="total_items">Total items:</string>
+    <string name="checked_items">Checked items:</string>
+    <string name="estimated_total">Estimated total:</string>
+    <string name="ten">10</string>
+    <string name="zero">0</string>
+
+    <!-- Add item section -->
+    <string name="add_new_item">Add New Item</string>
+    <string name="item_name_hint">Enter item name</string>
+    <string name="add">Add</string>
+
+    <!-- Action buttons -->
+    <string name="clear_all">Delete Item</string>
+    <string name="complete_shopping">Complete Shopping</string>
 </resources>

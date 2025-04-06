@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="12dp"
-    android:paddingTop="24dp"
     android:background="#FFFFFF">
 
     <LinearLayout
@@ -12,207 +11,420 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- 상단 헤더 -->
+        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:paddingBottom="16dp"
-            android:layout_marginTop="48dp">
+            android:layout_marginTop="16dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Shopping List"
+                android:text="@string/shopping_list_title"
                 android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:textSize="22sp"/>
 
             <TextView
+                android:id="@+id/tv_selected_items"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Selected items: 10"
+                android:text="@string/items_count"
                 android:textSize="14sp"
-                android:paddingEnd="12dp"/>
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"/>
         </LinearLayout>
 
-        <!-- Buy 버튼 -->
-        <Button
-            android:layout_width="wrap_content"
+        <!-- Instructions text -->
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Buy"
-            android:paddingHorizontal="16dp"
-            android:layout_gravity="end"
+            android:text="@string/shopping_instructions"
+            android:textSize="14sp"
+            android:textColor="#757575"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Added Items 카드 영역 -->
+        <!-- Shopping Items List -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="#FAFAFA"
-            android:padding="16dp">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FAFAFA">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="12dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Added Items"
+                    android:text="@string/my_shopping_list"
                     android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_marginBottom="12dp"/>
 
-                <GridLayout
+                <!-- Item 1 with checkbox -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="3"
-                    android:rowCount="2"
-                    android:alignmentMode="alignMargins"
-                    android:useDefaultMargins="true"
-                    android:padding="4dp">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginBottom="8dp">
 
-                    <!-- 아이템들 (기존 그리드 내용 유지) -->
+                    <CheckBox
+                        android:id="@+id/cb_item1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/melon"
+                        android:contentDescription="@string/melon_image_description"
+                        android:layout_marginStart="8dp"/>
+
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="#EEEEEE"
-                        android:padding="12dp">
-
-                        <ImageView
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/melon"
-                            android:layout_marginBottom="8dp"/>
+                        android:layout_marginStart="16dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Melon"
-                            android:textSize="14sp"
+                            android:text="@string/melon"
+                            android:textSize="16sp"
                             android:textStyle="bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="x3"
-                            android:textSize="12sp"/>
+                            android:text="@string/quantity_3"
+                            android:textSize="14sp"/>
                     </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price_melon"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Item 2 with checkbox -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginBottom="8dp">
+
+                    <CheckBox
+                        android:id="@+id/cb_item2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/soup1"
+                        android:contentDescription="@string/soup_image_description"
+                        android:layout_marginStart="8dp"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="#EEEEEE"
-                        android:padding="12dp">
-
-                        <ImageView
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/soup1"
-                            android:layout_marginBottom="8dp"/>
+                        android:layout_marginStart="16dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Soup"
-                            android:textSize="14sp"
+                            android:text="@string/soup"
+                            android:textSize="16sp"
                             android:textStyle="bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="x3"
-                            android:textSize="12sp"/>
+                            android:text="@string/quantity_three"
+                            android:textSize="14sp"/>
                     </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price_soup"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Item 3 with checkbox -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:background="#EEEEEE"
+                    android:layout_marginBottom="8dp">
+
+                    <CheckBox
+                        android:id="@+id/cb_item3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/mango"
+                        android:contentDescription="@string/mango_image_description"
+                        android:layout_marginStart="8dp"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="#EEEEEE"
-                        android:padding="12dp">
-
-                        <ImageView
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/mango"
-                            android:layout_marginBottom="8dp"/>
+                        android:layout_marginStart="16dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Mango"
-                            android:textSize="14sp"
+                            android:text="@string/mango"
+                            android:textSize="16sp"
                             android:textStyle="bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="x1"
-                            android:textSize="12sp"/>
+                            android:text="@string/quantity_1"
+                            android:textSize="14sp"/>
                     </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price_mango"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <!-- Item 4 with checkbox -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:background="#EEEEEE">
+
+                    <CheckBox
+                        android:id="@+id/cb_item4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/banana"
+                        android:contentDescription="@string/banana_image_description"
+                        android:layout_marginStart="8dp"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
-                        android:layout_height="140dp"
-                        android:layout_columnWeight="1"
-                        android:layout_rowWeight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical"
-                        android:gravity="center"
-                        android:background="#EEEEEE"
-                        android:padding="12dp">
-
-                        <ImageView
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
-                            android:src="@drawable/banana"
-                            android:layout_marginBottom="8dp"/>
+                        android:layout_marginStart="16dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Banana"
-                            android:textSize="14sp"
+                            android:text="@string/banana"
+                            android:textSize="16sp"
                             android:textStyle="bold"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="x3"
-                            android:textSize="12sp"/>
+                            android:text="@string/quantity_three"
+                            android:textSize="14sp"/>
                     </LinearLayout>
-                    <!-- 나머지 아이템들 동일하게 유지 -->
 
-                </GridLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/price_banana"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- More 버튼 -->
-        <Button
-            android:layout_width="120dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="24dp"
-            android:layout_gravity="center_horizontal"
-            android:text="More"
-            android:backgroundTint="#6200EE"
-            android:textColor="#FFFFFF"/>
+        <!-- Summary Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#F3F3F3">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shopping_summary"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_items"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/ten"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/checked_items"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_checked_items"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/zero"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="@string/estimated_total"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/total_price"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Add Item section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_new_item"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <EditText
+                android:id="@+id/et_new_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/item_name_hint"
+                android:padding="12dp"
+                android:inputType="text"
+                android:autofillHints="name"
+                android:background="@android:drawable/edit_text"/>
+
+            <Button
+                android:id="@+id/btn_add_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add"
+                android:layout_marginStart="8dp"
+                style="?android:attr/buttonBarButtonStyle"/>
+        </LinearLayout>
+
+        <!-- Action buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <Button
+                android:id="@+id/btn_clear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/clear_all"
+                android:backgroundTint="#FF5722"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="8dp"
+                style="?android:attr/buttonBarButtonStyle"/>
+
+            <Button
+                android:id="@+id/btn_complete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/complete_shopping"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFFFFF"
+                style="?android:attr/buttonBarButtonStyle"/>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
