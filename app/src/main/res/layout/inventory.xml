@@ -13,27 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_margin="20dp"
-
-
         android:hint="Search inventory..."
         android:padding="8dp"
-
         android:drawableStart="@android:drawable/ic_menu_search"/>
-
-
-    <Button
-        android:id="@+id/add_item_button"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="14dp"
-        android:padding="4dp"
-        android:text="ADD"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"/>
-
 
     <!-- Scrollable Inventory List -->
     <ScrollView
@@ -53,7 +35,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dairy Products"
+                android:text="Expiring Soon"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:paddingTop="8dp" />
@@ -64,15 +46,12 @@
                 android:scrollbars="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/expire_section"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
+
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -93,13 +72,10 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/fruit_section"
                     android:orientation="horizontal">
 
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
+
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -120,13 +96,10 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/pantry_section"
                     android:orientation="horizontal">
 
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
+
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -147,13 +120,9 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/frozen_section"
                     android:orientation="horizontal">
 
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -174,13 +143,32 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/beverages_section"
                     android:orientation="horizontal">
 
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+            <!-- Dairy -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dairy"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/dairy_section"
+                    android:orientation="horizontal">
+                    <!--<include layout="@layout/inventory_item"/> -->
+
                 </LinearLayout>
             </HorizontalScrollView>
 
@@ -201,17 +189,25 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:id="@+id/snacks_section"
                     android:orientation="horizontal">
 
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
-                    <include layout="@layout/inventory_item"/>
                 </LinearLayout>
             </HorizontalScrollView>
 
         </LinearLayout>
     </ScrollView>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_item_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        app:srcCompat="@android:drawable/ic_input_add"
+        android:contentDescription="Add Item"
+        app:tint="@android:color/white"
+        app:fabCustomSize="56dp"
+        android:backgroundTint="#4CAF50" />
 
 </RelativeLayout>
