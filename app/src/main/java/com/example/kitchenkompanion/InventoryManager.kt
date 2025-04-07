@@ -16,6 +16,33 @@ object InventoryManager {
     fun init(context: Context) {
         sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         loadInventory()
+
+        // Base item
+
+        //sharedPrefs.edit().putBoolean("initialized", false).apply()
+        val isInitialized = sharedPrefs.getBoolean("initialized", false)
+
+        if (!isInitialized) {
+            // just one time thing
+            inventoryList.addAll(
+                listOf(
+                    InventoryItem("Apple", "Kyumin", "Fruits", 5, "2025-04-15"),
+                    InventoryItem("Milk", "Kyumin", "Dairy", 2, "2025-04-10"),
+                    InventoryItem("Bread", "Kyumin", "Pantry", 1, "2025-04-08"),
+                    InventoryItem("Ice Cream", "Kyumin", "Frozen", 3, "2025-04-20"),
+                    InventoryItem("Chips", "Kyumin", "Snacks", 4, "2025-07-01"),
+                    InventoryItem("Water", "Kyumin", "Beverages", 6, "2026-01-01"),
+                    InventoryItem("soda", "Kyumin", "Beverages", 6, "2026-05-01")
+
+                )
+            )
+            saveInventory()
+
+            // 플래그 저장: 다음부턴 추가 안되게
+            sharedPrefs.edit().putBoolean("initialized", true).apply()
+        } else {
+            loadInventory()
+        }
     }
 
     private fun loadInventory() {
