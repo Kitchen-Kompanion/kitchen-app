@@ -48,4 +48,22 @@
     <!-- Action buttons -->
     <string name="clear_all">Delete Item</string>
     <string name="complete_shopping">Complete Shopping</string>
+
+
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+    <string name="expiring_soon">Expiring Soon</string>
+    <string name="pear">Pear</string>
+    <string name="two_days_left">2 Days Left</string>
+    <string name="expiring_food_image">Expiring food image</string>
+    <string name="next_item">Next item</string>
+    <string name="recently_added">Recently Added</string>
+    <string name="melon_image">Melon image</string>
+    <string name="melon_5_days_left">Melon - 5 days left</string>
+    <string name="favorite">Favorite</string>
+    <string name="carrot_image">Carrot image</string>
+    <string name="carrot_10_days_left">Carrot - 10 days left</string>
+    <string name="mushroom_image">Mushroom image</string>
+    <string name="mushroom_4_days_left">Mushroom - 4 days left</string>
 </resources>

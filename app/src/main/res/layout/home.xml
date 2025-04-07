@@ -4,158 +4,302 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="10dp"
     tools:context=".HomeFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <!-- Home Button -->
+    <TextView
+        android:id="@+id/homeButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/item_background"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="@string/home"
+        android:textSize="16sp" />
 
-        <ScrollView
+    <!-- Profile and Settings Icons -->
+    <LinearLayout
+        android:id="@+id/topButtonsLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/profileButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="16dp"
+            android:background="@null"
+            android:contentDescription="@string/profile"
+            android:src="@android:drawable/ic_menu_myplaces" />
+
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:contentDescription="@string/settings"
+            android:src="@android:drawable/ic_menu_manage" />
+    </LinearLayout>
+
+    <!-- Main Content ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/homeButton"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <!-- Expiring Soon Section -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp">
 
-                <TextView
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:shadowColor="#00C31F1F"
-                    android:text="Welcome to Kitchen Kompanion!"
-                    android:textAlignment="center"
-                    android:textColor="#6E02B1"
-                    android:textSize="34sp"
-                    android:textStyle="bold" />
+                    android:background="#E6F0F5"
+                    android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/textView2"
+                    <TextView
+                        android:id="@+id/expiringSoonTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/expiring_soon"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/expiringSoonItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/expiringSoonTitle"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/pear"
+                        android:textColor="#000000"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/expiringSoonDays"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/expiringSoonItem"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/two_days_left"
+                        android:textColor="#000000"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/expiringSoonImage"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/expiring_food_image"
+                        android:src="@drawable/default_image" />
+
+                    <ImageButton
+                        android:id="@+id/nextItemButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:contentDescription="@string/next_item"
+                        android:src="@android:drawable/ic_media_next" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/expiringSoonDays"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_margin="2dp"
+                            android:background="@android:color/black" />
+
+                        <View
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_margin="2dp"
+                            android:background="@android:color/darker_gray" />
+
+                        <View
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_margin="2dp"
+                            android:background="@android:color/darker_gray" />
+
+                        <View
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_margin="2dp"
+                            android:background="@android:color/darker_gray" />
+
+                        <View
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_margin="2dp"
+                            android:background="@android:color/darker_gray" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Recently Added Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/recently_added"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textAlignment="center"
-                    android:textColor="#6E02B1"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="Shopping " />
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:background="#F0F0F0">
 
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_margin="0dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="100"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="recipes button"
-                    android:cropToPadding="true"
-                    android:maxWidth="100dp"
-                    android:maxHeight="100dp"
-                    android:scaleType="centerInside"
-                    tools:src="@drawable/shopping" />
+                    <!-- Item 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="TextView"
-                    android:textAlignment="center"
-                    android:textColor="#6E02B1"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="Inventory " />
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/melon"
+                            android:contentDescription="@string/melon_image" />
 
-                <ImageButton
-                    android:id="@+id/imageButton3"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_margin="0dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="100"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="recipes button"
-                    android:cropToPadding="true"
-                    android:maxWidth="100dp"
-                    android:maxHeight="100dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/inventory" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:text="@string/melon_5_days_left"
+                            android:textColor="#000000"
+                            android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_weight="1"
-                    android:text="TextView"
-                    android:textAlignment="center"
-                    android:textColor="#6E02B1"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="Recipes" />
+                        <ImageButton
+                            android:id="@+id/favoriteItem1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@null"
+                            android:contentDescription="@string/favorite"
+                            android:src="@android:drawable/btn_star" />
+                    </LinearLayout>
 
-                <ImageButton
-                    android:id="@+id/imageButton4"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_margin="0dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="100"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="recipes button"
-                    android:cropToPadding="true"
-                    android:maxWidth="100dp"
-                    android:maxHeight="100dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/recipies" />
+                    <!-- Item 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="TextView"
-                    android:textAlignment="center"
-                    android:textColor="#6E02B1"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="Profile and Settings" />
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/carrot"
+                            android:contentDescription="@string/carrot_image" />
 
-                <ImageButton
-                    android:id="@+id/imageButton5"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_margin="0dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="recipes button"
-                    android:cropToPadding="true"
-                    android:maxWidth="100dp"
-                    android:maxHeight="100dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/recipies"
-                    tools:src="@android:drawable/ic_menu_manage" />
-            </LinearLayout>
-        </ScrollView>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:text="@string/carrot_10_days_left"
+                            android:textColor="#000000"
+                            android:textSize="16sp" />
 
-    </LinearLayout>
+                        <ImageButton
+                            android:id="@+id/favoriteItem2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@null"
+                            android:contentDescription="@string/favorite"
+                            android:src="@android:drawable/btn_star" />
+                    </LinearLayout>
+
+                    <!-- Item 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/default_image"
+                            android:contentDescription="@string/mushroom_image" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:text="@string/mushroom_4_days_left"
+                            android:textColor="#000000"
+                            android:textSize="16sp" />
+
+                        <ImageButton
+                            android:id="@+id/favoriteItem3"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@null"
+                            android:contentDescription="@string/favorite"
+                            android:src="@android:drawable/btn_star" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Add extra space at the bottom for the navigation bar -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="70dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
