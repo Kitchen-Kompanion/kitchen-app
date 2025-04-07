@@ -1,5 +1,7 @@
 package com.example.kitchenkompanion
 
+import java.text.SimpleDateFormat
+import java.util.*
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
@@ -73,6 +75,7 @@ class InventoryFragment : Fragment() {
     private fun refreshInventory(view: View) {
         Log.d("InventoryFragment", "HI")
         val inventoryList = InventoryManager.getItems()
+        val expireSection = view.findViewById<LinearLayout>(R.id.expire_section)
         val fruitSection = view.findViewById<LinearLayout>(R.id.fruit_section)
         val dairySection = view.findViewById<LinearLayout>(R.id.dairy_section)
         val pantrySection = view.findViewById<LinearLayout>(R.id.pantry_section)
@@ -81,6 +84,7 @@ class InventoryFragment : Fragment() {
         val snackSection = view.findViewById<LinearLayout>(R.id.snacks_section)
 
         // 기존 뷰 제거 (중복 방지)
+        expireSection.removeAllViews()
         fruitSection.removeAllViews()
         dairySection.removeAllViews()
         pantrySection.removeAllViews()
@@ -89,7 +93,22 @@ class InventoryFragment : Fragment() {
         snackSection.removeAllViews()
 
 
+        val expiringItems = getExpiringSoonItems()
+        for (item in expiringItems) {
+            val itemView = layoutInflater.inflate(R.layout.inventory_item, null)
+            itemView.findViewById<TextView>(R.id.item_name).text = item.name
+            itemView.findViewById<TextView>(R.id.item_count).text = item.count.toString()
+            val imageResId = ImageHelper.getImageResId(item.name.lowercase())
+            itemView.findViewById<ImageView>(R.id.item_image).setImageResource(imageResId)
 
+            itemView.setOnClickListener {
+                val intent = Intent(requireContext(), ItemDetailActivity::class.java)
+                intent.putExtra("item", item)
+                startActivity(intent)
+            }
+
+            expireSection.addView(itemView)
+        }
         for (item in inventoryList) {
             Log.d("InventoryFragment", item.toString())
 
@@ -123,7 +142,20 @@ class InventoryFragment : Fragment() {
     }
 
 
+    private fun getExpiringSoonItems(): List<InventoryItem> {
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+        val today = Calendar.getInstance().time
 
+        return InventoryManager.getItems().filter { item ->
+            try {
+                val expire = dateFormat.parse(item.expireDate)
+                val diff = (expire.time - today.time) / (1000 * 60 * 60 * 24)  // 일 수 차이
+                diff in 0..7
+            } catch (e: Exception) {
+                false // 날짜 파싱 실패한 경우 제외
+            }
+        }
+    }
     private fun showAddItemDialog(view : View) {
         val dialogView = layoutInflater.inflate(R.layout.add_item, null)
 
