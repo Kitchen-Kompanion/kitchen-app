@@ -1,8 +1,11 @@
 package com.example.kitchenkompanion
+
+import java.io.Serializable
+
 data class InventoryItem(
-    val name: String,
-    val owner: String,
-    val type: String,
-    val count: Int,
-    val expireDate: String
-)
+    var name: String,
+    var owner: String,
+    var type: String,
+    var count: Int,
+    var expireDate: String
+): Serializable

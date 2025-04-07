@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".InventoryFragment">
 
     <!-- Search Bar -->
@@ -31,14 +32,34 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <!-- Dairy Category -->
-            <TextView
+            <!-- Expiring Category -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Expiring Soon"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingTop="8dp" />
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Expiring Soon"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn_more_expiring"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All →"
+                    android:textSize="14sp"
+                    android:textColor="#4CAF50"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -56,13 +77,37 @@
             </HorizontalScrollView>
 
             <!-- Fruits & Vegetables Category -->
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Fruits"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingTop="8dp" />
+                android:orientation="horizontal"
+
+                android:paddingTop="8dp"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fruits"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/btn_more_fruits"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All →"
+                    android:textSize="14sp"
+                    android:textColor="#4CAF50"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </LinearLayout>
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -80,13 +125,34 @@
             </HorizontalScrollView>
 
             <!-- Pantry Items -->
-            <TextView
+            <!-- Pantry Items -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pantry Items"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingTop="8dp" />
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Pantry Items"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn_more_pantry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All →"
+                    android:textSize="14sp"
+                    android:textColor="#4CAF50"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -104,13 +170,34 @@
             </HorizontalScrollView>
 
             <!-- Frozen Items -->
-            <TextView
+            <!-- Frozen Items -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Frozen Items"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingTop="8dp" />
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Frozen Items"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn_more_frozen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All →"
+                    android:textSize="14sp"
+                    android:textColor="#4CAF50"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -127,13 +214,34 @@
             </HorizontalScrollView>
 
             <!-- Beverages -->
-            <TextView
+            <!-- Beverages -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Beverages"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingTop="8dp" />
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Beverages"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn_more_beverages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All →"
+                    android:textSize="14sp"
+                    android:textColor="#4CAF50"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -149,13 +257,34 @@
                 </LinearLayout>
             </HorizontalScrollView>
             <!-- Dairy -->
-            <TextView
+            <!-- Dairy -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Dairy"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingTop="8dp" />
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Dairy"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn_more_dairy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All →"
+                    android:textSize="14sp"
+                    android:textColor="#4CAF50"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -173,13 +302,34 @@
             </HorizontalScrollView>
 
             <!-- Snacks -->
-            <TextView
+            <!-- Snacks -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Snacks"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:paddingTop="8dp" />
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Snacks"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn_more_snacks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All →"
+                    android:textSize="14sp"
+                    android:textColor="#4CAF50"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+
 
             <HorizontalScrollView
                 android:layout_width="match_parent"

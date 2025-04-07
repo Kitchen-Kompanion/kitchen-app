@@ -1,6 +1,7 @@
 package com.example.kitchenkompanion
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -30,6 +31,44 @@ class InventoryFragment : Fragment() {
 
         InventoryManager.init(requireContext())
         refreshInventory(view)
+
+        val fruitsButton = view.findViewById<TextView>(R.id.btn_more_fruits)
+        val pantryButton = view.findViewById<TextView>(R.id.btn_more_pantry)
+        val frozenButton = view.findViewById<TextView>(R.id.btn_more_frozen)
+        val dairyButton = view.findViewById<TextView>(R.id.btn_more_dairy)
+        val beveragesButton = view.findViewById<TextView>(R.id.btn_more_beverages)
+        val snacksButton = view.findViewById<TextView>(R.id.btn_more_snacks)
+
+        fruitsButton.setOnClickListener {
+            openCategory("Fruits")
+        }
+        pantryButton.setOnClickListener {
+            openCategory("Pantry")
+        }
+        frozenButton.setOnClickListener {
+            openCategory("Frozen")
+        }
+        dairyButton.setOnClickListener {
+            openCategory("Dairy")
+        }
+        beveragesButton.setOnClickListener {
+            openCategory("Beverages")
+        }
+        snacksButton.setOnClickListener {
+            openCategory("Snacks")
+        }
+
+
+
+    }
+    private fun openCategory(category: String) {
+        val intent = Intent(requireContext(), CategoryViewActivity::class.java)
+        intent.putExtra("category", category)
+        startActivity(intent)
+    }
+    override fun onResume() {
+        super.onResume()
+        refreshInventory(requireView())
     }
     private fun refreshInventory(view: View) {
         Log.d("InventoryFragment", "HI")
@@ -58,7 +97,19 @@ class InventoryFragment : Fragment() {
             Log.d("InventoryFragment", "Item: ${item.name}, Type: ${item.type}, Count: ${item.count}")
             itemView.findViewById<TextView>(R.id.item_name).text = item.name.toString()
             itemView.findViewById<TextView>(R.id.item_count).text = item.count.toString()
-            itemView.findViewById<ImageView>(R.id.item_image).setImageResource(R.drawable.mango)
+            val imageName = item.name.lowercase() // 예: "mango"
+
+            val imageView = itemView.findViewById<ImageView>(R.id.item_image)
+            val imageResId = ImageHelper.getImageResId(item.name.lowercase())
+            imageView.setImageResource(imageResId)
+
+
+
+            itemView.setOnClickListener {
+                val intent = Intent(requireContext(), ItemDetailActivity::class.java)
+                intent.putExtra("item", item)
+                startActivity(intent)
+            }
 
             when (item.type) {
                 "Fruits" -> fruitSection.addView(itemView)
