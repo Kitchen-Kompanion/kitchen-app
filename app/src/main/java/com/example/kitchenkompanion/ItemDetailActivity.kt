@@ -28,7 +28,7 @@ class ItemDetailActivity : AppCompatActivity() {
         val expireEdit = findViewById<EditText>(R.id.edit_expire)
         val imageView = findViewById<ImageView>(R.id.detail_image)
 
-        // 기존 값 설정
+        // Set the initial values
         nameEdit.setText(item.name)
 
         ownerEdit.setText(item.owner)
@@ -37,7 +37,7 @@ class ItemDetailActivity : AppCompatActivity() {
         val imageResId = ImageHelper.getImageResId(item.name.lowercase())
         imageView.setImageResource(imageResId)
 
-        // 저장 버튼
+        // save button
         val saveButton = findViewById<Button>(R.id.btn_save)
         saveButton.setOnClickListener {
             val updatedItem = InventoryItem(
@@ -48,8 +48,8 @@ class ItemDetailActivity : AppCompatActivity() {
                 expireDate = expireEdit.text.toString()
             )
 
-            InventoryManager.removeItem(item)     // 기존 삭제
-            InventoryManager.addItem(updatedItem) // 수정한 거 저장
+            InventoryManager.removeItem(item)     // item delete
+            InventoryManager.addItem(updatedItem) // item add
             InventoryManager.saveItemsToPrefs(this)
 
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show()

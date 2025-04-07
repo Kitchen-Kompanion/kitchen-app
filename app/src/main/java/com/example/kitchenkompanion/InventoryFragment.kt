@@ -83,7 +83,7 @@ class InventoryFragment : Fragment() {
         val beverageSection = view.findViewById<LinearLayout>(R.id.beverages_section)
         val snackSection = view.findViewById<LinearLayout>(R.id.snacks_section)
 
-        // 기존 뷰 제거 (중복 방지)
+        // remove original views
         expireSection.removeAllViews()
         fruitSection.removeAllViews()
         dairySection.removeAllViews()
@@ -92,6 +92,11 @@ class InventoryFragment : Fragment() {
         beverageSection.removeAllViews()
         snackSection.removeAllViews()
 
+
+        // Count items
+
+        val uniqueItemCount = inventoryList.size
+        view.findViewById<TextView>(R.id.tv_selected_items).text = "Items: $uniqueItemCount"
 
         val expiringItems = getExpiringSoonItems()
         for (item in expiringItems) {
@@ -149,10 +154,10 @@ class InventoryFragment : Fragment() {
         return InventoryManager.getItems().filter { item ->
             try {
                 val expire = dateFormat.parse(item.expireDate)
-                val diff = (expire.time - today.time) / (1000 * 60 * 60 * 24)  // 일 수 차이
+                val diff = (expire.time - today.time) / (1000 * 60 * 60 * 24)
                 diff in 0..7
             } catch (e: Exception) {
-                false // 날짜 파싱 실패한 경우 제외
+                false
             }
         }
     }

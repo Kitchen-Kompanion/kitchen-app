@@ -31,11 +31,11 @@ class CategoryViewActivity : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
-        setupGrid(categoryName, grid, categoryTitle) // 돌아올 때마다 새로고침
+        setupGrid(categoryName, grid, categoryTitle)
     }
     private fun setupGrid(categoryName: String, grid: GridLayout, categoryTitle: TextView) {
         categoryTitle.text = categoryName
-        grid.removeAllViews()  // 리프레시할 때 중복 방지
+        grid.removeAllViews()
 
         val items = InventoryManager.getItems().filter { it.type == categoryName }
 

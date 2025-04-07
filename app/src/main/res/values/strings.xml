@@ -6,6 +6,7 @@
     <string name="items_count">Items: 10</string>
     <string name="items_count_format">Items: %1$d</string>
     <string name="shopping_instructions">Check items as you add them to your cart. Track your shopping progress below.</string>
+    <string name="inventory_instructions">Tap an item to view, edit, or delete. Expiring items appear above.</string>
     <string name="my_shopping_list">My Shopping List</string>
 
     <!-- Item names -->
