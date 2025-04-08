@@ -70,4 +70,29 @@
     <!-- Optional formatting templates -->
     <string name="quantity_format">Qty: %1$d</string>
     <string name="price_format">$%1$.2f</string>
+
+    <!--  Recipes  -->
+    <string name="recipes">Recipes</string>
+    <string name="avacado_toast_recipe">Mash a ripe avocado with a squeeze of lemon juice and a pinch of salt. \nSpread it evenly on a toasted slice of bread. \nSprinkle with red pepper flakes for a bit of heat.</string>
+    <string name="avacado_toast">Avacado Toast</string>
+    <string name="scrambled_eggs">Scrambled Eggs</string>
+    <string name="scrambled_eggs_recipe">Whisk two eggs with a splash of milk, salt, and pepper.\nMelt butter in a pan, pour in the eggs, and gently scramble until cooked through but still moist. \nServe immediately.</string>
+    <string name="tuna_salad">Tuna Salad</string>
+    <string name="tuna_salad_recipe">Combine a can of drained tuna with mayonnaise, diced celery, and a squeeze of lemon juice.\nMix well and season with salt and pepper. \nServe on lettuce or bread.</string>
+    <string name="caprese_salad">Caprese Salad</string>
+    <string name="caprese_salad_recipe">Slice fresh mozzarella and ripe tomatoes. \nArrange them on a plate, alternating slices. \nDrizzle with olive oil, balsamic glaze, and sprinkle with fresh basil leaves.</string>
+    <string name="microwave_oatmeal">Microwave Oatmeal</string>
+    <string name="microwave_oatmeal_recipe">Combine rolled oats, water or milk, and a pinch of salt in a microwave-safe bowl.\nMicrowave for 2-3 minutes, stirring occasionally.\nTop with fruit and nuts.</string>
+
+    <!--  Filter cb's  -->
+    <string name="vegetarian">Vegetarian</string>
+    <string name="beef">Beef</string>
+    <string name="chicken">Chicken</string>
+    <string name="pork">Pork</string>
+    <string name="fish">Fish</string>
+    <string name="halal">Halal</string>
+    <string name="kosher">Kosher</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="snack">Snack</string>
+    <string name="recipe_instructions">Filter recipes by your preference. When you find one you like click on the recipe for more details.</string>
 </resources>
