@@ -172,7 +172,7 @@ class RecipesFragment : Fragment() {
         } else {
             filteredRecipes.addAll(
                 allRecipeItems.filter { recipe ->
-                    active.any { filter ->
+                    active.all { filter ->
                         recipe.tags.any { tag ->
                             tag.trim().equals(
                                 filter.trim(),
