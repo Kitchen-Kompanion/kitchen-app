@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">KitchenKompanion</string>
 
@@ -50,7 +51,7 @@
     <string name="clear_all">Delete Item</string>
     <string name="complete_shopping">Complete Shopping</string>
 
-
+    <!-- Home screen -->
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="settings">Settings</string>
@@ -67,4 +68,20 @@
     <string name="carrot_10_days_left">Carrot - 10 days left</string>
     <string name="mushroom_image">Mushroom image</string>
     <string name="mushroom_4_days_left">Mushroom - 4 days left</string>
+
+    <!-- App title -->
+    <string name="app_title">Kitchen Kompanion</string>
+
+    <!-- Toast Messages -->
+    <string name="profile_toast">Profile</string>
+    <string name="settings_toast">Settings</string>
+    <string name="added_to_favorites">%1$s added to favorites</string>
+    <string name="removed_from_favorites">%1$s removed from favorites</string>
+
+    <!-- Expiry Text -->
+    <string name="expires_today">Expires Today!</string>
+    <string name="one_day_left">1 Day Left</string>
+    <string name="days_left_format">%d Days Left</string>
+    <string name="no_expiring_items">No expiring items</string>
+    <string name="add_items_to_track">Add items to track expiry</string>
 </resources>
