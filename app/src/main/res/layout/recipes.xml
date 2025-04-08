@@ -1,451 +1,420 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    android:padding="12dp">
+    android:padding="12dp"
+    tools:context=".RecipesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--    Header    -->
+        <!-- Header - Matched to HomeFragment style -->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-            <!--                app:cardBackgroundColor="#B0B0B0"-->
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/recipes"
-                android:textSize="26sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/recipe_instructions"
-                android:textSize="18sp"
-                />
-
-
-        </LinearLayout>
-
-<!--        FILTERS            -->
-        <LinearLayout
-            android:id="@+id/llfilters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingHorizontal="12dp">
+            android:gravity="center_vertical"
+            android:paddingBottom="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/appTitle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/app_title"
+                android:textStyle="bold"
+                android:textSize="22sp"/>
+        </LinearLayout>
+
+        <!-- Recipes title and instructions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/recipes"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#4CAF50" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/recipe_instructions"
+                android:textSize="16sp"
+                android:textColor="#757575"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!--        FILTERS            -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
 
             <LinearLayout
+                android:id="@+id/llfilters"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="4dp">
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp">
 
                 <CheckBox
                     android:id="@+id/cbVegetarian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#E8F5E9"
+                    android:padding="8dp"
                     android:text="@string/vegetarian" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
 
                 <CheckBox
                     android:id="@+id/cbBeef"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#FBE9E7"
+                    android:padding="8dp"
                     android:text="@string/beef" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
 
                 <CheckBox
                     android:id="@+id/cbChicken"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#FFF3E0"
+                    android:padding="8dp"
                     android:text="@string/chicken" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
 
                 <CheckBox
                     android:id="@+id/cbPork"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#FCE4EC"
+                    android:padding="8dp"
                     android:text="@string/pork" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
 
                 <CheckBox
                     android:id="@+id/cbFish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#E1F5FE"
+                    android:padding="8dp"
                     android:text="@string/fish" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
 
                 <CheckBox
                     android:id="@+id/cbHalal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#E8EAF6"
+                    android:padding="8dp"
                     android:text="@string/halal" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
 
                 <CheckBox
                     android:id="@+id/cbKosher"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#EDE7F6"
+                    android:padding="8dp"
                     android:text="@string/kosher" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
 
                 <CheckBox
                     android:id="@+id/cbBreakfast"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#FFF8E1"
+                    android:padding="8dp"
                     android:text="@string/breakfast" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="4dp">
 
                 <CheckBox
                     android:id="@+id/cbSnack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#F3E5F5"
+                    android:padding="8dp"
                     android:text="@string/snack" />
-
             </LinearLayout>
-
-        </LinearLayout>
+        </HorizontalScrollView>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="1000dp"
+            android:layout_height="match_parent"
             android:fillViewport="true">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvRecipe"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="26dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="2dp">
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/llRecipe"
+                <!-- No recipes message -->
+                <TextView
+                    android:id="@+id/tvNoRecipes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="16dp"
+                    android:gravity="center"
+                    android:text="No recipes match your filters"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
+                    android:visibility="gone" />
+
+                <!-- Recipe Cards -->
+                <LinearLayout
+                    android:id="@+id/ll1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#F5F5F5"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+                    android:orientation="horizontal"
                     android:padding="12dp">
 
-                    <LinearLayout
-                        android:id="@+id/ll1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
                         android:background="#EEEEEE"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:orientation="horizontal"
-                        android:padding="8dp">
-                        <!--                    android:gravity="center_vertical"-->
-
-
-                        <ImageView
-                            android:layout_width="200dp"
-                            android:layout_height="200dp"
-                            android:layout_marginStart="8dp"
-                            android:contentDescription="@string/melon_image_description"
-                            android:src="@drawable/melon" />
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tvName1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/avacado_toast"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvDescription1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/avacado_toast_recipe"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
-                    </LinearLayout>
+                        android:contentDescription="@string/melon_image_description"
+                        android:padding="8dp"
+                        android:src="@drawable/melon" />
 
                     <LinearLayout
-                        android:id="@+id/ll2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:background="#EEEEEE"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:orientation="horizontal"
-                        android:padding="8dp">
-                        <!--                    android:gravity="center_vertical"-->
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
 
-
-                        <ImageView
-                            android:layout_width="200dp"
-                            android:layout_height="200dp"
-                            android:layout_marginStart="8dp"
-                            android:contentDescription="@string/melon_image_description"
-                            android:src="@drawable/melon" />
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/tvName1"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:text="@string/avacado_toast"
+                            android:textColor="#4CAF50"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
 
-                            <TextView
-                                android:id="@+id/tvName2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/scrambled_eggs"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvDescription2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/scrambled_eggs_recipe"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:background="#EEEEEE"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:orientation="horizontal"
-                        android:padding="8dp">
-                        <!--                    android:gravity="center_vertical"-->
-
-
-                        <ImageView
-                            android:layout_width="200dp"
-                            android:layout_height="200dp"
-                            android:layout_marginStart="8dp"
-                            android:contentDescription="@string/melon_image_description"
-                            android:src="@drawable/melon" />
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/tvDescription1"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tvName3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/tuna_salad"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvDescription3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/tuna_salad_recipe"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+                            android:text="@string/avacado_toast_recipe"
+                            android:textSize="14sp" />
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:background="#EEEEEE"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:orientation="horizontal"
-                        android:padding="8dp">
-                        <!--                    android:gravity="center_vertical"-->
-
-
-                        <ImageView
-                            android:layout_width="200dp"
-                            android:layout_height="200dp"
-                            android:layout_marginStart="8dp"
-                            android:contentDescription="@string/melon_image_description"
-                            android:src="@drawable/melon" />
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tvName4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/caprese_salad"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvDescription4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/caprese_salad_recipe"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/ll5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:background="#EEEEEE"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:orientation="horizontal"
-                        android:padding="8dp">
-                        <!--                    android:gravity="center_vertical"-->
-
-
-                        <ImageView
-                            android:layout_width="200dp"
-                            android:layout_height="200dp"
-                            android:layout_marginStart="8dp"
-                            android:contentDescription="@string/melon_image_description"
-                            android:src="@drawable/melon" />
-
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tvName5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/microwave_oatmeal"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvDescription5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:text="@string/microwave_oatmeal_recipe"
-                                android:textSize="16sp" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-
-
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/ll2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#F5F5F5"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
 
-            </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:background="#EEEEEE"
+                        android:contentDescription="@string/melon_image_description"
+                        android:padding="8dp"
+                        android:src="@drawable/melon" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/tvName2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/scrambled_eggs"
+                            android:textColor="#4CAF50"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDescription2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+                            android:text="@string/scrambled_eggs_recipe"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#F5F5F5"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:background="#EEEEEE"
+                        android:contentDescription="@string/melon_image_description"
+                        android:padding="8dp"
+                        android:src="@drawable/melon" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvName3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tuna_salad"
+                            android:textColor="#4CAF50"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDescription3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+                            android:text="@string/tuna_salad_recipe"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#F5F5F5"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:background="#EEEEEE"
+                        android:contentDescription="@string/melon_image_description"
+                        android:padding="8dp"
+                        android:src="@drawable/melon" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvName4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/caprese_salad"
+                            android:textColor="#4CAF50"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDescription4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+                            android:text="@string/caprese_salad_recipe"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#F5F5F5"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:background="#EEEEEE"
+                        android:contentDescription="@string/melon_image_description"
+                        android:padding="8dp"
+                        android:src="@drawable/melon" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvName5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/microwave_oatmeal"
+                            android:textColor="#4CAF50"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDescription5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+                            android:text="@string/microwave_oatmeal_recipe"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 </RelativeLayout>

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/recipe_background"
-    android:padding="16dp"
-    >
+    android:padding="16dp">
 
     <ImageView
         android:id="@+id/ivClose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_alignParentEnd="true"
         android:padding="8dp"
+        android:elevation="4dp"
+        android:background="#33000000"
         android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
     <ScrollView
@@ -24,62 +26,119 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/ivRecipeImage"
+            <!-- Enhanced Recipe Image with Overlay and Title -->
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/melon" />
+                android:layout_height="220dp">
 
-            <TextView
-                android:id="@+id/tvRecipeName"
+                <ImageView
+                    android:id="@+id/ivRecipeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/melon" />
+
+                <!-- Gradient overlay for better text visibility -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#80000000" />
+
+                <TextView
+                    android:id="@+id/tvRecipeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:padding="16dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:shadowColor="#80000000"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
+                    android:shadowRadius="3" />
+            </RelativeLayout>
+
+            <!-- Enhanced Recipe Tags -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
                 android:layout_marginTop="16dp"
-                android:textSize="24sp"
+                android:layout_marginBottom="8dp"
+                android:padding="8dp"
+                android:background="#F5F5F5">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tags: "
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#4CAF50"/>
+
+                <TextView
+                    android:id="@+id/tvRecipeTags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#333333"/>
+            </LinearLayout>
+
+            <!-- Ingredients section with improved styling -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ingredients"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:gravity="center" />
+                android:textColor="#4CAF50"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
 
             <LinearLayout
                 android:id="@+id/llIngredients"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:orientation="vertical"/>
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:background="#F9F9F9"
+                android:layout_marginBottom="16dp"/>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <!-- Enhanced Instructions Section -->
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/tvRecipeTagsTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Tags:"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:paddingRight="2sp"/>
-
-                <TextView
-                    android:id="@+id/tvRecipeTags"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:textSize="14sp" />
-
-            </LinearLayout>
-
+                android:text="Instructions"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#4CAF50"
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:id="@+id/tvRecipeDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textSize="16sp" />
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:lineSpacingExtra="6dp"
+                android:background="#F9F9F9"
+                android:layout_marginBottom="16dp"/>
 
-
+            <!-- Add to Shopping List Button -->
+            <Button
+                android:id="@+id/btnAddToShoppingList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Ingredients to Shopping List"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="#4CAF50"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
