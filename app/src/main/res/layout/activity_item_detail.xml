@@ -10,6 +10,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Back Button -->
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textColor="#2196F3"
+            android:background="@android:color/transparent"
+            android:textStyle="bold"
+            android:layout_marginBottom="0dp"/>
+
         <!-- item image-->
         <ImageView
             android:id="@+id/detail_image"

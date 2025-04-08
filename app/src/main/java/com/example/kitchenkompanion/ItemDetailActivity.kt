@@ -37,6 +37,10 @@ class ItemDetailActivity : AppCompatActivity() {
         val imageResId = ImageHelper.getImageResId(item.name.lowercase())
         imageView.setImageResource(imageResId)
 
+        // Back Button
+        findViewById<Button>(R.id.back_button).setOnClickListener {
+            finish()
+        }
         // save button
         val saveButton = findViewById<Button>(R.id.btn_save)
         saveButton.setOnClickListener {
