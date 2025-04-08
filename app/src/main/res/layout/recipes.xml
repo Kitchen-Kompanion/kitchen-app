@@ -56,101 +56,109 @@
                 android:layout_marginTop="4dp" />
         </LinearLayout>
 
-        <!--        FILTERS            -->
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:id="@+id/llfilters"
-                android:layout_width="wrap_content"
+            <!--        FILTERS            -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp">
+                android:scrollbars="none">
 
-                <CheckBox
-                    android:id="@+id/cbVegetarian"
+                <LinearLayout
+                    android:id="@+id/llfilters"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="#E8F5E9"
-                    android:padding="8dp"
-                    android:text="@string/vegetarian" />
+                    android:orientation="horizontal"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
 
-                <CheckBox
-                    android:id="@+id/cbBeef"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="#FBE9E7"
-                    android:padding="8dp"
-                    android:text="@string/beef" />
+                    <CheckBox
+                        android:id="@+id/cbVegetarian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="#E8F5E9"
+                        android:padding="8dp"
+                        android:text="@string/vegetarian" />
 
-                <CheckBox
-                    android:id="@+id/cbChicken"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="#FFF3E0"
-                    android:padding="8dp"
-                    android:text="@string/chicken" />
+                    <CheckBox
+                        android:id="@+id/cbBeef"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="#FBE9E7"
+                        android:padding="8dp"
+                        android:text="@string/beef" />
 
-                <CheckBox
-                    android:id="@+id/cbPork"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="#FCE4EC"
-                    android:padding="8dp"
-                    android:text="@string/pork" />
+                    <CheckBox
+                        android:id="@+id/cbChicken"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="#FFF3E0"
+                        android:padding="8dp"
+                        android:text="@string/chicken" />
 
-                <CheckBox
-                    android:id="@+id/cbFish"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="#E1F5FE"
-                    android:padding="8dp"
-                    android:text="@string/fish" />
+                    <CheckBox
+                        android:id="@+id/cbPork"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="#FCE4EC"
+                        android:padding="8dp"
+                        android:text="@string/pork" />
 
-                <CheckBox
-                    android:id="@+id/cbHalal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="#E8EAF6"
-                    android:padding="8dp"
-                    android:text="@string/halal" />
+                    <CheckBox
+                        android:id="@+id/cbFish"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="#E1F5FE"
+                        android:padding="8dp"
+                        android:text="@string/fish" />
 
-                <CheckBox
-                    android:id="@+id/cbKosher"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="#EDE7F6"
-                    android:padding="8dp"
-                    android:text="@string/kosher" />
+                    <CheckBox
+                        android:id="@+id/cbHalal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="#E8EAF6"
+                        android:padding="8dp"
+                        android:text="@string/halal" />
 
-                <CheckBox
-                    android:id="@+id/cbBreakfast"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="#FFF8E1"
-                    android:padding="8dp"
-                    android:text="@string/breakfast" />
+                    <CheckBox
+                        android:id="@+id/cbKosher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="#EDE7F6"
+                        android:padding="8dp"
+                        android:text="@string/kosher" />
 
-                <CheckBox
-                    android:id="@+id/cbSnack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="#F3E5F5"
-                    android:padding="8dp"
-                    android:text="@string/snack" />
-            </LinearLayout>
+                    <CheckBox
+                        android:id="@+id/cbBreakfast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="#FFF8E1"
+                        android:padding="8dp"
+                        android:text="@string/breakfast" />
+
+                    <CheckBox
+                        android:id="@+id/cbSnack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#F3E5F5"
+                        android:padding="8dp"
+                        android:text="@string/snack" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
         </HorizontalScrollView>
+
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -189,12 +197,13 @@
                     android:padding="12dp">
 
                     <ImageView
+                        android:id="@+id/img1"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:background="#EEEEEE"
                         android:contentDescription="@string/melon_image_description"
                         android:padding="8dp"
-                        android:src="@drawable/melon" />
+                        android:src="@drawable/avocado_toast" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -237,12 +246,13 @@
                     android:padding="12dp">
 
                     <ImageView
+                        android:id="@+id/img2"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:background="#EEEEEE"
                         android:contentDescription="@string/melon_image_description"
                         android:padding="8dp"
-                        android:src="@drawable/melon" />
+                        android:src="@drawable/scrampled_eggs" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -285,12 +295,13 @@
                     android:padding="12dp">
 
                     <ImageView
+                        android:id="@+id/img3"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:background="#EEEEEE"
                         android:contentDescription="@string/melon_image_description"
                         android:padding="8dp"
-                        android:src="@drawable/melon" />
+                        android:src="@drawable/tuna_salad" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -333,12 +344,13 @@
                     android:padding="12dp">
 
                     <ImageView
+                        android:id="@+id/img4"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:background="#EEEEEE"
                         android:contentDescription="@string/melon_image_description"
                         android:padding="8dp"
-                        android:src="@drawable/melon" />
+                        android:src="@drawable/caprese_salad" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -381,12 +393,13 @@
                     android:padding="12dp">
 
                     <ImageView
+                        android:id="@+id/img5"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:background="#EEEEEE"
                         android:contentDescription="@string/melon_image_description"
                         android:padding="8dp"
-                        android:src="@drawable/melon" />
+                        android:src="@drawable/oatmeal" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

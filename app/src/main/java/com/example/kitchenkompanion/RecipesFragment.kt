@@ -26,8 +26,10 @@ class RecipesFragment : Fragment() {
         val name: String,
         val description: String,
         val ingredients: List<String>,
-        val tags: List<String>
+        val tags: List<String>,
+        val img: Int
     )
+
 
     private val allRecipeItems = listOf(
         RecipeItem(
@@ -40,7 +42,8 @@ class RecipesFragment : Fragment() {
                 "Salt to taste",
                 "Red pepper flakes (optional)"
             ),
-            listOf("Vegetarian", "Breakfast", "Snack", "Halal", "Kosher")
+            listOf("Vegetarian", "Breakfast", "Snack", "Halal", "Kosher"),
+            R.drawable.avocado_toast
         ),
         RecipeItem(
             "Scrambled Eggs",
@@ -51,7 +54,8 @@ class RecipesFragment : Fragment() {
                 "1 tsp butter",
                 "Salt and pepper to taste"
             ),
-            listOf("Vegetarian","Breakfast","Halal", "Kosher")
+            listOf("Vegetarian", "Breakfast", "Halal", "Kosher"),
+            R.drawable.scrampled_eggs
         ),
         RecipeItem(
             "Tuna Salad",
@@ -64,7 +68,8 @@ class RecipesFragment : Fragment() {
                 "Salt and pepper to taste",
                 "Lettuce or bread for serving"
             ),
-            listOf("Fish", "Kosher")
+            listOf("Fish", "Kosher"),
+            R.drawable.tuna_salad
         ),
         RecipeItem(
             "Caprese Salad",
@@ -77,7 +82,8 @@ class RecipesFragment : Fragment() {
                 "1 tbsp balsamic glaze",
                 "Salt and pepper to taste"
             ),
-            listOf("Vegetarian", "Halal", "Kosher")
+            listOf("Vegetarian", "Halal", "Kosher"),
+            R.drawable.caprese_salad
         ),
         RecipeItem(
             "Microwave Oatmeal",
@@ -88,7 +94,8 @@ class RecipesFragment : Fragment() {
                 "Pinch of salt",
                 "Fruit and nuts for topping"
             ),
-            listOf("Vegetarian", "Breakfast")
+            listOf("Vegetarian", "Breakfast"),
+            R.drawable.oatmeal
         )
     )
 
@@ -214,23 +221,34 @@ class RecipesFragment : Fragment() {
                 R.id.ll1 -> {
                     it.findViewById<TextView>(R.id.tvName1)?.text = recipeItem.name
                     it.findViewById<TextView>(R.id.tvDescription1)?.text = recipeItem.description
+                    it.findViewById<ImageView>(R.id.img1)?.setImageResource(recipeItem.img)
                 }
+
                 R.id.ll2 -> {
                     it.findViewById<TextView>(R.id.tvName2)?.text = recipeItem.name
                     it.findViewById<TextView>(R.id.tvDescription2)?.text = recipeItem.description
+                    it.findViewById<ImageView>(R.id.img2)?.setImageResource(recipeItem.img)
                 }
+
                 R.id.ll3 -> {
                     it.findViewById<TextView>(R.id.tvName3)?.text = recipeItem.name
                     it.findViewById<TextView>(R.id.tvDescription3)?.text = recipeItem.description
+                    it.findViewById<ImageView>(R.id.img3)?.setImageResource(recipeItem.img)
                 }
+
                 R.id.ll4 -> {
                     it.findViewById<TextView>(R.id.tvName4)?.text = recipeItem.name
                     it.findViewById<TextView>(R.id.tvDescription4)?.text = recipeItem.description
+                    it.findViewById<ImageView>(R.id.img4)?.setImageResource(recipeItem.img)
                 }
+
                 R.id.ll5 -> {
                     it.findViewById<TextView>(R.id.tvName5)?.text = recipeItem.name
                     it.findViewById<TextView>(R.id.tvDescription5)?.text = recipeItem.description
+                    it.findViewById<ImageView>(R.id.img5)?.setImageResource(recipeItem.img)
                 }
+
+                else -> {return}
             }
         }
     }
@@ -240,6 +258,7 @@ class RecipesFragment : Fragment() {
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.recipes_popup, null)
 
         // Find views in the dialog layout
+        val imageView = dialogView.findViewById<ImageView>(R.id.ivRecipeImage)
         val ingredientsContainer = dialogView.findViewById<LinearLayout>(R.id.llIngredients)
         val nameTextView = dialogView.findViewById<TextView>(R.id.tvRecipeName)
         val tagsTextView = dialogView.findViewById<TextView>(R.id.tvRecipeTags)
@@ -247,6 +266,7 @@ class RecipesFragment : Fragment() {
         val closeButton = dialogView.findViewById<ImageView>(R.id.ivClose)
 
         // Set recipe details
+        imageView?.setImageResource(recipe.img)
         nameTextView?.text = recipe.name
         tagsTextView?.text = recipe.tags.joinToString(", ")
         descriptionTextView?.text = recipe.description
