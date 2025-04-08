@@ -1,595 +1,443 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="72dp"
-    tools:context=".RecipesFragment">
-
-    <EditText
-        android:id="@+id/recipe_search"
-        android:layout_width="680dp"
-        android:layout_height="48dp"
-        android:layout_margin="20dp"
-        android:hint="Search Recipies"
-        android:padding="8dp"
-        android:drawableStart="@android:drawable/ic_menu_search"/>
-
-
-    <Button
-        android:id="@+id/search_button"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="20dp"
-        android:padding="8dp"
-        android:text="Search"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/white"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="1000dp"
-        android:layout_marginTop="100dp"
-        >
-
-    <TextView
-        android:id="@+id/recommended"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recommended:"
-        android:textSize="35dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"
-        />
-
-        <HorizontalScrollView
-            android:layout_width="800dp"
-            android:layout_height="400dp"
-            android:fillViewport="true"
-            android:scrollbars="vertical"
-            android:fadeScrollbars="false"
-            android:translationX="-265dp"
-            android:translationY="40dp">
-
-            <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:rowCount="2"
-                android:padding="10dp"
-                android:orientation="vertical"
-                >
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/r1"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/soup1"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Soup"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/r2"
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/banana"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Banana"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/r3"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/soup1"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Soup"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/r4"
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/banana"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Banana"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/r10"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/soup1"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Soup"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/r49"
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/banana"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Banana"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/r5"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/soup1"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Soup"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/r6"
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/banana"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Banana"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/r7"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/soup1"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Soup"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/r8"
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/banana"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Banana"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-            </GridLayout>
-        </HorizontalScrollView>
-
-    </LinearLayout>
+    android:background="#FFFFFF"
+    android:padding="12dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="500dp"
-        >
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-
-        <TextView
-            android:layout_width="wrap_content"
+        <!--    Header    -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Popular:"
-            android:textStyle="bold"
-            android:textSize="35dp"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+            <!--                app:cardBackgroundColor="#B0B0B0"-->
 
-        <HorizontalScrollView
-            android:layout_width="800dp"
-            android:layout_height="400dp"
-            android:fillViewport="true"
-            android:scrollbars="vertical"
-            android:fadeScrollbars="false"
-            android:translationX="-150dp"
-            android:translationY="40dp">
 
-            <GridLayout
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/recipes"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+<!--        FILTERS            -->
+        <LinearLayout
+            android:id="@+id/llfilters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp">
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:rowCount="2"
-                android:padding="10dp"
-                android:orientation="vertical"
-                >
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
 
-
-                <LinearLayout
+                <CheckBox
+                    android:id="@+id/cbVegetarian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="@string/vegetarian" />
 
-                    <ImageView
-                        android:id="@+id/p1"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/soup1"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"/>
+            </LinearLayout>
 
-                    <TextView
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <CheckBox
+                    android:id="@+id/cbBeef"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/beef" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <CheckBox
+                    android:id="@+id/cbChicken"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chicken" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <CheckBox
+                    android:id="@+id/cbPork"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pork" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <CheckBox
+                    android:id="@+id/cbFish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fish" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <CheckBox
+                    android:id="@+id/cbHalal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/halal" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <CheckBox
+                    android:id="@+id/cbKosher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kosher" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <CheckBox
+                    android:id="@+id/cbBreakfast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/breakfast" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <CheckBox
+                    android:id="@+id/cbSnack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/snack" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:fillViewport="true">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvRecipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="26dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:id="@+id/llRecipe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:id="@+id/ll1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Soup"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="#EEEEEE"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+                        <!--                    android:gravity="center_vertical"-->
+
+
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_marginStart="8dp"
+                            android:contentDescription="@string/melon_image_description"
+                            android:src="@drawable/melon" />
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvName1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/avacado_toast"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDescription1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/avacado_toast_recipe"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="#EEEEEE"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+                        <!--                    android:gravity="center_vertical"-->
+
+
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_marginStart="8dp"
+                            android:contentDescription="@string/melon_image_description"
+                            android:src="@drawable/melon" />
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvName2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/scrambled_eggs"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDescription2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/scrambled_eggs_recipe"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="#EEEEEE"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+                        <!--                    android:gravity="center_vertical"-->
+
+
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_marginStart="8dp"
+                            android:contentDescription="@string/melon_image_description"
+                            android:src="@drawable/melon" />
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvName3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/tuna_salad"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDescription3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/tuna_salad_recipe"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="#EEEEEE"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+                        <!--                    android:gravity="center_vertical"-->
+
+
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_marginStart="8dp"
+                            android:contentDescription="@string/melon_image_description"
+                            android:src="@drawable/melon" />
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvName4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/caprese_salad"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDescription4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/caprese_salad_recipe"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:background="#EEEEEE"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+                        <!--                    android:gravity="center_vertical"-->
+
+
+                        <ImageView
+                            android:layout_width="200dp"
+                            android:layout_height="200dp"
+                            android:layout_marginStart="8dp"
+                            android:contentDescription="@string/melon_image_description"
+                            android:src="@drawable/melon" />
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvName5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/microwave_oatmeal"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvDescription5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/microwave_oatmeal_recipe"
+                                android:textSize="16sp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/p2"
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/banana"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Banana"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/soup1"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Soup"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/banana"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Banana"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/soup1"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Soup"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/banana"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Banana"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/soup1"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Soup"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/banana"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Banana"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/soup1"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginStart="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Soup"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:src="@drawable/banana"
-                        android:scaleType="centerCrop"
-                        android:layout_marginEnd="10dp"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="Banana"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
-            </GridLayout>
-        </HorizontalScrollView>
-
+        </ScrollView>
     </LinearLayout>
-
-
 </RelativeLayout>

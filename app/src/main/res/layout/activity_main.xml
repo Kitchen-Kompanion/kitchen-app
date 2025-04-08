@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".MainActivity">
 
     <androidx.viewpager2.widget.ViewPager2
@@ -21,25 +22,25 @@
         app:tabGravity="fill"
         app:tabMode="fixed"
         app:tabIndicatorColor="?colorPrimary"
+        android:background="@android:color/white"
         android:layout_alignParentBottom="true">
-
-<!--        <com.google.android.material.tabs.TabItem-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:icon="@drawable/home"-->
-<!--            android:text="Home"/>-->
-
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/shopping"
-            android:text="Shopping"/>
+            android:icon="@drawable/home"
+            android:text="Home"/>
+
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/inventory"
             android:text="Inventory"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/shopping"
+            android:text="Shopping"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
