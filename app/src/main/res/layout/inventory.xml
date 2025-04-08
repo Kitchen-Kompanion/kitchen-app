@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="⚠️  Expiring Soon"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#D32F2F"
             android:paddingBottom="8dp" />
@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Fruits"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -115,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View All →"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="#4CAF50"
                     android:textStyle="bold"
                     android:clickable="true"
@@ -135,7 +135,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/fruit_section"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    >
 
 
                 </LinearLayout>
@@ -154,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Pantry Items"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -162,7 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View All →"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="#4CAF50"
                     android:textStyle="bold"
                     android:clickable="true"
@@ -173,6 +174,7 @@
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:scrollbars="horizontal">
 
                 <LinearLayout
@@ -199,7 +201,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Frozen Items"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -207,7 +209,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View All →"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="#4CAF50"
                     android:textStyle="bold"
                     android:clickable="true"
@@ -224,6 +226,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/frozen_section"
+
                     android:orientation="horizontal">
 
                 </LinearLayout>
@@ -250,7 +253,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View All →"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="#4CAF50"
                     android:textStyle="bold"
                     android:clickable="true"
@@ -284,7 +287,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Dairy"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -292,7 +295,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View All →"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="#4CAF50"
                     android:textStyle="bold"
                     android:clickable="true"
@@ -328,7 +331,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Snacks"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -336,7 +339,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="View All →"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:textColor="#4CAF50"
                     android:textStyle="bold"
                     android:clickable="true"
@@ -370,7 +373,7 @@
         app:srcCompat="@android:drawable/ic_input_add"
         android:contentDescription="Add Item"
         app:tint="@android:color/white"
-        app:fabCustomSize="56dp"
+        app:fabCustomSize="62dp"
         android:backgroundTint="#4CAF50" />
 
 </RelativeLayout>

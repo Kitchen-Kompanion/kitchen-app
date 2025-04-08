@@ -106,6 +106,14 @@ class InventoryFragment : Fragment() {
             val imageResId = ImageHelper.getImageResId(item.name.lowercase())
             itemView.findViewById<ImageView>(R.id.item_image).setImageResource(imageResId)
 
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            val marginInDp = (12 * resources.displayMetrics.density).toInt() // 12dp
+            params.setMargins(0, 0, marginInDp, 0)
+            itemView.layoutParams = params
+
             itemView.setOnClickListener {
                 val intent = Intent(requireContext(), ItemDetailActivity::class.java)
                 intent.putExtra("item", item)
@@ -121,11 +129,19 @@ class InventoryFragment : Fragment() {
             Log.d("InventoryFragment", "Item: ${item.name}, Type: ${item.type}, Count: ${item.count}")
             itemView.findViewById<TextView>(R.id.item_name).text = item.name.toString()
             itemView.findViewById<TextView>(R.id.item_count).text = item.count.toString()
-            val imageName = item.name.lowercase() // 예: "mango"
+            val imageName = item.name.lowercase()
 
             val imageView = itemView.findViewById<ImageView>(R.id.item_image)
             val imageResId = ImageHelper.getImageResId(item.name.lowercase())
             imageView.setImageResource(imageResId)
+
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            val marginInDp = (12 * resources.displayMetrics.density).toInt() // 12dp
+            params.setMargins(0, 0, marginInDp, 0)
+            itemView.layoutParams = params
 
 
 
