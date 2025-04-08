@@ -2,6 +2,7 @@ package com.example.kitchenkompanion
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,33 +15,10 @@ import android.widget.Toast
 
 class HomeFragment : Fragment() {
 
-    // Food data models
-    data class FoodItem(
-        val name: String,
-        val daysLeft: Int,
-        val imageResId: Int,
-        var isFavorite: Boolean = false
-    )
-
-    // Sample data - replace with your database implementation
-    private val expiringItems = listOf(
-        FoodItem("Pear", 2, R.drawable.default_image),
-        FoodItem("Apple", 3, R.drawable.apple),
-        FoodItem("Banana", 1, R.drawable.banana),
-        FoodItem("Orange", 4, R.drawable.orange),
-        FoodItem("Milk", 2, R.drawable.milk)
-    )
-
-    private val recentItems = listOf(
-        FoodItem("Melon", 5, R.drawable.melon),
-        FoodItem("Carrot", 10, R.drawable.carrot),
-        FoodItem("Mushroom", 4, R.drawable.default_image)
-    )
-
     private var currentExpiringItemIndex = 0
-
-    // The app uses a fixed set of indicator dots
     private val maxIndicators = 5
+    private lateinit var expiringItems: List<HomeManager.FoodItem>
+    private lateinit var recentItems: List<HomeManager.FoodItem>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,22 +31,56 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Setup UI components
-        setupTopButtons(view)
-        setupExpiringItemsCarousel(view)
-        setupRecentItemsList(view)
+        try {
+            // Initialize HomeManager
+            HomeManager.init(requireContext())
+
+            // Load data
+            expiringItems = HomeManager.getExpiringItems()
+            recentItems = HomeManager.getRecentItems()
+
+            // Set text from resources to views
+            view.findViewById<TextView>(R.id.appTitle).text = resources.getString(R.string.app_title)
+            view.findViewById<TextView>(R.id.expiringSoonTitle).text = resources.getString(R.string.expiring_soon)
+            view.findViewById<TextView>(R.id.recentlyAddedTitle).text = resources.getString(R.string.recently_added)
+
+            // Set content descriptions
+            view.findViewById<ImageButton>(R.id.profileButton).contentDescription = resources.getString(R.string.profile)
+            view.findViewById<ImageButton>(R.id.settingsButton).contentDescription = resources.getString(R.string.settings)
+            view.findViewById<ImageButton>(R.id.nextItemButton).contentDescription = resources.getString(R.string.next_item)
+            view.findViewById<ImageView>(R.id.expiringSoonImage).contentDescription = resources.getString(R.string.expiring_food_image)
+
+            for (i in 1..3) {
+                val favoriteButton = when (i) {
+                    1 -> view.findViewById<ImageButton>(R.id.favoriteItem1)
+                    2 -> view.findViewById<ImageButton>(R.id.favoriteItem2)
+                    3 -> view.findViewById<ImageButton>(R.id.favoriteItem3)
+                    else -> null
+                }
+                favoriteButton?.contentDescription = resources.getString(R.string.favorite)
+            }
+
+            // Setup UI components
+            setupTopButtons(view)
+            setupExpiringItemsCarousel(view)
+            setupRecentItemsList(view)
+        } catch (e: Exception) {
+            // Handle any initialization errors
+            Log.e("HomeFragment", "Error initializing: ${e.message}", e)
+            Toast.makeText(context, "Error initializing: ${e.message}", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun setupTopButtons(view: View) {
         val profileButton = view.findViewById<ImageButton>(R.id.profileButton)
         profileButton?.setOnClickListener {
-            Toast.makeText(context, R.string.profile_toast, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, resources.getString(R.string.profile_toast), Toast.LENGTH_SHORT).show()
             // Navigate to profile screen
         }
 
         val settingsButton = view.findViewById<ImageButton>(R.id.settingsButton)
         settingsButton?.setOnClickListener {
-            Toast.makeText(context, R.string.settings_toast, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, resources.getString(R.string.settings_toast), Toast.LENGTH_SHORT).show()
             // Navigate to settings screen
         }
     }
@@ -77,10 +89,10 @@ class HomeFragment : Fragment() {
         // Check if list is empty to prevent crashes
         if (expiringItems.isEmpty()) {
             val itemNameTextView = view.findViewById<TextView>(R.id.expiringSoonItem)
-            itemNameTextView?.setText(R.string.no_expiring_items)
+            itemNameTextView?.text = resources.getString(R.string.no_expiring_items)
 
             val daysTextView = view.findViewById<TextView>(R.id.expiringSoonDays)
-            daysTextView?.setText(R.string.add_items_to_track)
+            daysTextView?.text = resources.getString(R.string.add_items_to_track)
 
             val nextButton = view.findViewById<ImageButton>(R.id.nextItemButton)
             nextButton?.isEnabled = false
@@ -100,25 +112,27 @@ class HomeFragment : Fragment() {
 
     private fun updateExpiringItemDisplay(view: View) {
         val currentItem = expiringItems[currentExpiringItemIndex]
+        val daysLeft = HomeManager.getDaysUntilExpiry(currentItem)
 
         // Update the UI with current item's details
         val itemNameTextView = view.findViewById<TextView>(R.id.expiringSoonItem)
         itemNameTextView?.text = currentItem.name
 
         // Format days text based on days left
-        val daysText = when (currentItem.daysLeft) {
-            0 -> getString(R.string.expires_today)
-            1 -> getString(R.string.one_day_left)
-            else -> getString(R.string.days_left_format, currentItem.daysLeft)
+        val daysText = when (daysLeft) {
+            0 -> resources.getString(R.string.expires_today)
+            1 -> resources.getString(R.string.one_day_left)
+            else -> resources.getString(R.string.days_left_format, daysLeft)
         }
 
         val daysTextView = view.findViewById<TextView>(R.id.expiringSoonDays)
         daysTextView?.text = daysText
 
-        // Set image or default if resource not found
+        // Set image
         val imageView = view.findViewById<ImageView>(R.id.expiringSoonImage)
         try {
-            imageView?.setImageResource(currentItem.imageResId)
+            val imageResId = ImageHelper.getImageResId(currentItem.name)
+            imageView?.setImageResource(imageResId)
         } catch (e: Exception) {
             imageView?.setImageResource(R.drawable.default_image)
         }
@@ -175,11 +189,18 @@ class HomeFragment : Fragment() {
             return
         }
 
-        // Initialize favorite buttons with correct state
-        setupFavoriteButtons(view)
+        // Set up recent items display
+        setupRecentItemsDisplay(view)
     }
 
-    private fun setupFavoriteButtons(view: View) {
+    private fun setupRecentItemsDisplay(view: View) {
+        // Find the container that will hold recent items
+        val itemContainers = listOf(
+            view.findViewById<View>(R.id.recentItem1Container),
+            view.findViewById<View>(R.id.recentItem2Container),
+            view.findViewById<View>(R.id.recentItem3Container)
+        )
+
         // Set up favorite buttons with initial states
         val favoriteButtons = listOf(
             view.findViewById<ImageButton>(R.id.favoriteItem1),
@@ -187,42 +208,110 @@ class HomeFragment : Fragment() {
             view.findViewById<ImageButton>(R.id.favoriteItem3)
         )
 
-        // Initialize buttons with correct favorite state
+        // Set up item images
+        val itemImages = listOf(
+            view.findViewById<ImageView>(R.id.recentItem1Image),
+            view.findViewById<ImageView>(R.id.recentItem2Image),
+            view.findViewById<ImageView>(R.id.recentItem3Image)
+        )
+
+        // Set up item text views
+        val itemTextViews = listOf(
+            view.findViewById<TextView>(R.id.recentItem1Text),
+            view.findViewById<TextView>(R.id.recentItem2Text),
+            view.findViewById<TextView>(R.id.recentItem3Text)
+        )
+
+        // Display recent items (up to 3)
         for (i in recentItems.indices) {
-            if (i < favoriteButtons.size) {
-                val button = favoriteButtons[i]
+            if (i >= 3) break // Only show up to 3 items
 
-                // Set initial button state
-                if (recentItems[i].isFavorite) {
-                    button?.setImageResource(android.R.drawable.btn_star_big_on)
-                } else {
-                    button?.setImageResource(android.R.drawable.btn_star)
-                }
+            val item = recentItems[i]
+            val daysLeft = HomeManager.getDaysUntilExpiry(item)
 
-                // Set click listener
-                button?.setOnClickListener {
-                    toggleFavorite(i, it as ImageButton)
+            // Set item text
+            val itemText = "${item.name} - ${
+                when (daysLeft) {
+                    0 -> resources.getString(R.string.expires_today)
+                    1 -> resources.getString(R.string.one_day_left)
+                    else -> resources.getString(R.string.days_left_format, daysLeft)
                 }
+            }"
+            itemTextViews[i].text = itemText
+
+            // Set content description for image
+            itemImages[i].contentDescription = "${item.name} ${resources.getString(R.string.expiring_food_image)}"
+
+            // Set item image
+            try {
+                val imageResId = ImageHelper.getImageResId(item.name)
+                itemImages[i].setImageResource(imageResId)
+            } catch (e: Exception) {
+                itemImages[i].setImageResource(R.drawable.default_image)
             }
+
+            // Set favorite button state
+            val isFavorite = HomeManager.getFavoriteStatus(item.name)
+            favoriteButtons[i].setImageResource(
+                if (isFavorite) android.R.drawable.btn_star_big_on
+                else android.R.drawable.btn_star
+            )
+
+            // Set click listener for favorite button
+            val index = i // Capture the index in a local variable
+            favoriteButtons[i].setOnClickListener {
+                toggleFavorite(index)
+            }
+        }
+
+        // Hide unused items
+        for (i in recentItems.size until 3) {
+            itemContainers[i].visibility = View.GONE
         }
     }
 
-    private fun toggleFavorite(itemIndex: Int, button: ImageButton) {
+    private fun toggleFavorite(itemIndex: Int) {
         // Make sure index is valid
         if (itemIndex < recentItems.size) {
-            // Toggle favorite status
-            recentItems[itemIndex].isFavorite = !recentItems[itemIndex].isFavorite
+            val item = recentItems[itemIndex]
+            val newStatus = HomeManager.toggleFavorite(item.name)
 
-            // Update button appearance using system icons
-            if (recentItems[itemIndex].isFavorite) {
-                button.setImageResource(android.R.drawable.btn_star_big_on)
-                Toast.makeText(context, getString(R.string.added_to_favorites, recentItems[itemIndex].name), Toast.LENGTH_SHORT).show()
-            } else {
-                button.setImageResource(android.R.drawable.btn_star)
-                Toast.makeText(context, getString(R.string.removed_from_favorites, recentItems[itemIndex].name), Toast.LENGTH_SHORT).show()
+            // Update button appearance
+            val button = when (itemIndex) {
+                0 -> view?.findViewById<ImageButton>(R.id.favoriteItem1)
+                1 -> view?.findViewById<ImageButton>(R.id.favoriteItem2)
+                2 -> view?.findViewById<ImageButton>(R.id.favoriteItem3)
+                else -> null
             }
 
-            // Here you would update the database with the new favorite status
+            button?.setImageResource(
+                if (newStatus) android.R.drawable.btn_star_big_on
+                else android.R.drawable.btn_star
+            )
+
+            // Show appropriate toast message
+            val message = if (newStatus) {
+                resources.getString(R.string.added_to_favorites, item.name)
+            } else {
+                resources.getString(R.string.removed_from_favorites, item.name)
+            }
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Refresh data from HomeManager when fragment resumes
+        try {
+            expiringItems = HomeManager.getExpiringItems()
+            recentItems = HomeManager.getRecentItems()
+            view?.let { view ->
+                setupExpiringItemsCarousel(view)
+                setupRecentItemsList(view)
+            }
+        } catch (e: Exception) {
+            // Handle any refresh errors
+            Log.e("HomeFragment", "Error refreshing: ${e.message}", e)
         }
     }
 }
