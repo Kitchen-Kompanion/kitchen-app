@@ -20,6 +20,7 @@ class RecipesFragment : Fragment() {
         val description: String,
         val ingredients: List<String>,
         val tags: List<String>,
+        val img: Int
     )
 
 
@@ -34,7 +35,8 @@ class RecipesFragment : Fragment() {
                 "Salt to taste",
                 "Red pepper flakes (optional)"
             ),
-            listOf("Vegetarian", "Breakfast", "Snack", "Halal", "Kosher")
+            listOf("Vegetarian", "Breakfast", "Snack", "Halal", "Kosher"),
+            R.drawable.avocado_toast
         ),
         RecipeItem(
             "Scrambled Eggs",
@@ -45,7 +47,8 @@ class RecipesFragment : Fragment() {
                 "1 tsp butter",
                 "Salt and pepper to taste"
             ),
-            listOf("Vegetarian","Breakfast","Halal", "Kosher")
+            listOf("Vegetarian","Breakfast","Halal", "Kosher"),
+            R.drawable.scrampled_eggs
         ),
         RecipeItem(
             "Tuna Salad",
@@ -58,7 +61,8 @@ class RecipesFragment : Fragment() {
                 "Salt and pepper to taste",
                 "Lettuce or bread for serving"
             ),
-            listOf("Fish", "Kosher")
+            listOf("Fish", "Kosher"),
+            R.drawable.tuna_salad
         ),
         RecipeItem(
             "Caprese Salad",
@@ -71,7 +75,8 @@ class RecipesFragment : Fragment() {
                 "1 tbsp balsamic glaze",
                 "Salt and pepper to taste"
             ),
-            listOf("Vegetarian", "Halal", "Kosher")
+            listOf("Vegetarian", "Halal", "Kosher"),
+            R.drawable.caprese_salad
         ),
         RecipeItem(
             "Microwave Oatmeal",
@@ -82,7 +87,8 @@ class RecipesFragment : Fragment() {
                 "Pinch of salt",
                 "Fruit and nuts for topping"
             ),
-            listOf("Vegetarian", "Breakfast")
+            listOf("Vegetarian", "Breakfast"),
+            R.drawable.oatmeal
         )
     )
     private val checked = mutableMapOf<String, Boolean>().withDefault { false }
@@ -206,8 +212,18 @@ class RecipesFragment : Fragment() {
                 else -> return
             }
 
+            val img = when(position){
+                0 -> R.id.img1
+                1 -> R.id.img2
+                2 -> R.id.img3
+                3 -> R.id.img4
+                4 -> R.id.img5
+                else -> return
+            }
+
             it.findViewById<TextView>(name)?.text = recipeItem.name
             it.findViewById<TextView>(desc)?.text = recipeItem.description
+            it.findViewById<ImageView>(img)?.setImageResource(recipeItem.img)
         }
     }
 
@@ -216,6 +232,7 @@ class RecipesFragment : Fragment() {
             LayoutInflater.from(requireContext()).inflate(R.layout.recipes_popup, null)
         val ingredientsContainer = dialogView.findViewById<LinearLayout>(R.id.llIngredients)
 
+        dialogView.findViewById<ImageView>(R.id.ivRecipeImage).setImageResource(recipe.img)
         dialogView.findViewById<TextView>(R.id.tvRecipeName).text = recipe.name
         dialogView.findViewById<TextView>(R.id.tvRecipeTags).text = recipe.tags.joinToString(", ")
         dialogView.findViewById<TextView>(R.id.tvRecipeDescription).text = recipe.description

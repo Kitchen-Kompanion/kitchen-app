@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity=""
                 android:text="@string/recipes"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -211,11 +211,14 @@
 
 
                         <ImageView
+                            android:id="@+id/img1"
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:layout_marginStart="8dp"
-                            android:contentDescription="@string/melon_image_description"
-                            android:src="@drawable/melon" />
+                            android:contentDescription="image of avocado toast"
+                            android:src="@drawable/avocado_toast"
+                            android:scaleType="fitCenter"
+                            android:adjustViewBounds="true"/>
 
 
                         <LinearLayout
@@ -259,11 +262,12 @@
 
 
                         <ImageView
+                            android:id="@+id/img2"
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:layout_marginStart="8dp"
-                            android:contentDescription="@string/melon_image_description"
-                            android:src="@drawable/melon" />
+                            android:contentDescription="image of scrambled eggs"
+                            android:src="@drawable/scrampled_eggs" />
 
 
                         <LinearLayout
@@ -309,11 +313,12 @@
 
 
                         <ImageView
+                            android:id="@+id/img3"
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:layout_marginStart="8dp"
-                            android:contentDescription="@string/melon_image_description"
-                            android:src="@drawable/melon" />
+                            android:contentDescription="Image of tuna salad"
+                            android:src="@drawable/tuna_salad" />
 
 
                         <LinearLayout
@@ -357,11 +362,12 @@
 
 
                         <ImageView
+                            android:id="@+id/img4"
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:layout_marginStart="8dp"
-                            android:contentDescription="@string/melon_image_description"
-                            android:src="@drawable/melon" />
+                            android:contentDescription="image of caprese salad"
+                            android:src="@drawable/caprese_salad" />
 
 
                         <LinearLayout
@@ -405,11 +411,12 @@
 
 
                         <ImageView
+                            android:id="@+id/img5"
                             android:layout_width="200dp"
                             android:layout_height="200dp"
                             android:layout_marginStart="8dp"
-                            android:contentDescription="@string/melon_image_description"
-                            android:src="@drawable/melon" />
+                            android:contentDescription="image of oatmeal"
+                            android:src="@drawable/oatmeal" />
 
 
                         <LinearLayout
