@@ -24,6 +24,14 @@ class HomeFragment : Fragment() {
         val imageResId: Int,
         var isFavorite: Boolean = false
     )
+    private val recentItems = listOf(
+        FoodItem("Melon", 5, R.drawable.melon),
+        FoodItem("Carrot", 10, R.drawable.carrot),
+        FoodItem("Bread", 4, R.drawable.bread),
+        FoodItem("Watermelon", 4, R.drawable.watermelon),
+        FoodItem("Tomato", 4, R.drawable.tomato),
+        FoodItem("Orange", 4, R.drawable.orange)
+    )
 
     private lateinit var expiringItems: List<FoodItem>
     private lateinit var expiredItems: List<FoodItem>
@@ -42,6 +50,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupTopButtons(view)
         loadItems(view)
+        setupRecentItemsList(view)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -151,6 +160,69 @@ class HomeFragment : Fragment() {
                 setBackgroundColor(if (i == currentIndex) Color.BLACK else Color.GRAY)
             }
             container.addView(dot)
+        }
+    }
+
+    private fun setupRecentItemsList(view: View) {
+        // Check if list is empty
+        if (recentItems.isEmpty()) {
+            // Hide the section or show empty state
+            val recentItemsCard = view.findViewById<View>(R.id.recentItemsCard)
+            recentItemsCard?.visibility = View.GONE
+            return
+        }
+
+        // Initialize favorite buttons with correct state
+        setupFavoriteButtons(view)
+    }
+
+    private fun setupFavoriteButtons(view: View) {
+        // Set up favorite buttons with initial states
+        val favoriteButtons = listOf(
+            view.findViewById<ImageButton>(R.id.favoriteItem1),
+            view.findViewById<ImageButton>(R.id.favoriteItem2),
+            view.findViewById<ImageButton>(R.id.favoriteItem3),
+            view.findViewById<ImageButton>(R.id.favoriteItem4),
+            view.findViewById<ImageButton>(R.id.favoriteItem5),
+            view.findViewById<ImageButton>(R.id.favoriteItem6)
+        )
+
+        // Initialize buttons with correct favorite state
+        for (i in recentItems.indices) {
+            if (i < favoriteButtons.size) {
+                val button = favoriteButtons[i]
+
+                // Set initial button state
+                if (recentItems[i].isFavorite) {
+                    button?.setImageResource(android.R.drawable.btn_star_big_on)
+                } else {
+                    button?.setImageResource(android.R.drawable.btn_star)
+                }
+
+                // Set click listener
+                button?.setOnClickListener {
+                    toggleFavorite(i, it as ImageButton)
+                }
+            }
+        }
+    }
+
+    private fun toggleFavorite(itemIndex: Int, button: ImageButton) {
+        // Make sure index is valid
+        if (itemIndex < recentItems.size) {
+            // Toggle favorite status
+            recentItems[itemIndex].isFavorite = !recentItems[itemIndex].isFavorite
+
+            // Update button appearance using system icons
+            if (recentItems[itemIndex].isFavorite) {
+                button.setImageResource(android.R.drawable.btn_star_big_on)
+                Toast.makeText(context, getString(R.string.added_to_favorites, recentItems[itemIndex].name), Toast.LENGTH_SHORT).show()
+            } else {
+                button.setImageResource(android.R.drawable.btn_star)
+                Toast.makeText(context, getString(R.string.removed_from_favorites, recentItems[itemIndex].name), Toast.LENGTH_SHORT).show()
+            }
+
+            // Here you would update the database with the new favorite status
         }
     }
 }
