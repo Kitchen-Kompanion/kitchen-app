@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
+//todo: add images, integrate with shopping list
 
 class RecipesFragment : Fragment() {
     data class RecipeItem(
