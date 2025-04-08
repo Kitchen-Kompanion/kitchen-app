@@ -36,6 +36,7 @@
                 android:textSize="14sp"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp" />
+
         </LinearLayout>
 
         <!-- Instructions -->
@@ -109,10 +110,12 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/tv_total_items"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ten"
+                        android:text="0"
                         android:textSize="14sp" />
+
                 </LinearLayout>
 
                 <LinearLayout

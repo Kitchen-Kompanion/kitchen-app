@@ -14,6 +14,7 @@ class ShoppingFragment : Fragment() {
 
     private lateinit var tvSelectedItems: TextView
     private lateinit var tvCheckedItems: TextView
+    private lateinit var tvTotalItems: TextView
     private lateinit var etNewItem: EditText
     private lateinit var etQuantity: EditText
     private lateinit var btnAddItem: Button
@@ -31,19 +32,16 @@ class ShoppingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        try {
-            ShoppingManager.init(requireContext())
-            initViews(view)
-            setupListeners()
-            refreshShoppingList()
-        } catch (e: Exception) {
-            Toast.makeText(context, "Error initializing: ${e.message}", Toast.LENGTH_LONG).show()
-        }
+        ShoppingManager.init(requireContext())
+        initViews(view)
+        setupListeners()
+        refreshShoppingList()
     }
 
     private fun initViews(view: View) {
         tvSelectedItems = view.findViewById(R.id.tv_selected_items)
         tvCheckedItems = view.findViewById(R.id.tv_checked_items)
+        tvTotalItems = view.findViewById(R.id.tv_total_items)
         etNewItem = view.findViewById(R.id.et_new_item)
         etQuantity = view.findViewById(R.id.et_quantity)
         btnAddItem = view.findViewById(R.id.btn_add_item)
@@ -96,26 +94,9 @@ class ShoppingFragment : Fragment() {
     }
 
     private fun completeShoppingSession() {
-        val checkedItemsCount = ShoppingManager.getCheckedItems().size
-        val totalItemsCount = ShoppingManager.getItems().size
-
+        val checkedItemsCount = ShoppingManager.getCheckedItems().sumOf { it.quantity }
         if (checkedItemsCount > 0) {
-            if (checkedItemsCount == totalItemsCount) {
-                Toast.makeText(context, "Shopping completed! All items purchased.", Toast.LENGTH_LONG).show()
-                try {
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                        requireActivity().onBackPressedDispatcher.onBackPressed()
-                    } else {
-                        @Suppress("DEPRECATION")
-                        requireActivity().onBackPressed()
-                    }
-                } catch (e: Exception) {
-                    Toast.makeText(context, "Shopping session completed!", Toast.LENGTH_SHORT).show()
-                }
-            } else {
-                val remainingItems = totalItemsCount - checkedItemsCount
-                Toast.makeText(context, "You still have $remainingItems items to purchase!", Toast.LENGTH_LONG).show()
-            }
+            Toast.makeText(context, "Successfully purchased $checkedItemsCount item(s).", Toast.LENGTH_LONG).show()
         } else {
             Toast.makeText(context, "No items have been checked. Please select items you've purchased.", Toast.LENGTH_LONG).show()
         }
@@ -147,12 +128,12 @@ class ShoppingFragment : Fragment() {
 
     private fun updateItemCounts() {
         val totalQuantity = ShoppingManager.getItems().sumOf { it.quantity }
-        val checkedItems = ShoppingManager.getCheckedItems().sumOf { it.quantity }
+        val checkedQuantity = ShoppingManager.getCheckedItems().sumOf { it.quantity }
 
         tvSelectedItems.text = resources.getString(R.string.items_count_format, totalQuantity)
-        tvCheckedItems.text = checkedItems.toString()
+        tvCheckedItems.text = checkedQuantity.toString()
+        tvTotalItems.text = totalQuantity.toString()
     }
-
 
     private fun updateTotalPrice() {
         val totalPrice = ShoppingManager.calculateTotalCheckedPrice()
