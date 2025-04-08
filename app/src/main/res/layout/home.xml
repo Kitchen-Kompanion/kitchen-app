@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="10dp"
+    android:background="#FFFFFF"
+    android:padding="12dp"
     tools:context=".HomeFragment">
 
     <LinearLayout
@@ -12,150 +13,255 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <ScrollView
+        <!-- Header -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingBottom="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/appTitle"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="22sp"/>
+
+            <ImageButton
+                android:id="@+id/profileButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_myplaces"
+                android:padding="4dp" />
+
+            <ImageButton
+                android:id="@+id/settingsButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_manage"
+                android:padding="4dp" />
+        </LinearLayout>
+
+        <!-- Expiring Soon Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#E6F0F5"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/expiringSoonTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/expiringSoonItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/expiringSoonTitle"
+                    android:layout_marginTop="8dp"
+                    android:textColor="#000000"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/expiringSoonDays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/expiringSoonItem"
+                    android:layout_marginTop="4dp"
+                    android:textColor="#000000"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <FrameLayout
+                    android:id="@+id/imageContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/expiringSoonImage"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:src="@drawable/default_image" />
+
+                    <ImageButton
+                        android:id="@+id/nextItemButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@android:drawable/ic_media_next"
+                        android:elevation="2dp" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/indicatorContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/expiringSoonDays"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+                    <!-- Dots will be added programmatically -->
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Recently Added Section -->
+        <TextView
+            android:id="@+id/recentlyAddedTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/recentItemsCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="#F0F0F0">
 
-                <TextView
+                <!-- Item 1 -->
+                <LinearLayout
+                    android:id="@+id/recentItem1Container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:shadowColor="#00C31F1F"
-                    android:text="Welcome to Kitchen Kompanion!"
-                    android:textAlignment="center"
-                    android:textColor="#6E02B1"
-                    android:textSize="34sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
 
-                <TextView
-                    android:id="@+id/textView2"
+                    <ImageView
+                        android:id="@+id/recentItem1Image"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/default_image" />
+
+                    <TextView
+                        android:id="@+id/recentItem1Text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+                    <ImageButton
+                        android:id="@+id/favoriteItem1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@android:drawable/btn_star" />
+                </LinearLayout>
+
+                <!-- Item 2 -->
+                <LinearLayout
+                    android:id="@+id/recentItem2Container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    android:textAlignment="center"
-                    android:textColor="#6E02B1"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="Shopping " />
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
 
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_margin="0dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="100"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="recipes button"
-                    android:cropToPadding="true"
-                    android:maxWidth="100dp"
-                    android:maxHeight="100dp"
-                    android:scaleType="centerInside"
-                    tools:src="@drawable/shopping" />
+                    <ImageView
+                        android:id="@+id/recentItem2Image"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/default_image" />
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="TextView"
-                    android:textAlignment="center"
-                    android:textColor="#6E02B1"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="Inventory " />
+                    <TextView
+                        android:id="@+id/recentItem2Text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
 
-                <ImageButton
-                    android:id="@+id/imageButton3"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_margin="0dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="100"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="recipes button"
-                    android:cropToPadding="true"
-                    android:maxWidth="100dp"
-                    android:maxHeight="100dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/inventory" />
+                    <ImageButton
+                        android:id="@+id/favoriteItem2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@android:drawable/btn_star" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/textView6"
+                <!-- Item 3 -->
+                <LinearLayout
+                    android:id="@+id/recentItem3Container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_weight="1"
-                    android:text="TextView"
-                    android:textAlignment="center"
-                    android:textColor="#6E02B1"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="Recipes" />
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
 
-                <ImageButton
-                    android:id="@+id/imageButton4"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_margin="0dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="100"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="recipes button"
-                    android:cropToPadding="true"
-                    android:maxWidth="100dp"
-                    android:maxHeight="100dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/recipies" />
+                    <ImageView
+                        android:id="@+id/recentItem3Image"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/default_image" />
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="TextView"
-                    android:textAlignment="center"
-                    android:textColor="#6E02B1"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    tools:text="Profile and Settings" />
+                    <TextView
+                        android:id="@+id/recentItem3Text"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
 
-                <ImageButton
-                    android:id="@+id/imageButton5"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_margin="0dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="false"
-                    android:contentDescription="recipes button"
-                    android:cropToPadding="true"
-                    android:maxWidth="100dp"
-                    android:maxHeight="100dp"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/recipies"
-                    tools:src="@android:drawable/ic_menu_manage" />
+                    <ImageButton
+                        android:id="@+id/favoriteItem3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@android:drawable/btn_star" />
+                </LinearLayout>
             </LinearLayout>
-        </ScrollView>
+        </androidx.cardview.widget.CardView>
 
+        <!-- Add extra space at the bottom for the navigation bar -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="70dp" />
     </LinearLayout>
-
-</RelativeLayout>
+</ScrollView>
