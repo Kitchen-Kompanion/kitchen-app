@@ -24,8 +24,8 @@
         <!-- item image-->
         <ImageView
             android:id="@+id/detail_image"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginBottom="24dp"
             android:scaleType="centerCrop"
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:padding="20dp"
-            android:layout_marginBottom="12dp"
+            android:padding="4dp"
+            android:layout_marginBottom="4dp"
             android:elevation="4dp">
 
             <TextView
@@ -65,8 +65,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:padding="20dp"
-            android:layout_marginBottom="12dp"
+            android:padding="4dp"
+            android:layout_marginBottom="4dp"
             android:elevation="4dp">
 
             <TextView
@@ -92,8 +92,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:padding="20dp"
-            android:layout_marginBottom="12dp"
+            android:padding="4dp"
+            android:layout_marginBottom="4dp"
             android:elevation="4dp">
 
             <TextView
@@ -120,8 +120,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:padding="20dp"
-            android:layout_marginBottom="12dp"
+            android:padding="4dp"
+            android:layout_marginBottom="4dp"
             android:elevation="4dp">
 
             <TextView
@@ -149,8 +149,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:padding="20dp"
-            android:layout_marginBottom="12dp"
+            android:padding="4dp"
+            android:layout_marginBottom="4dp"
             android:elevation="4dp">
 
             <TextView
