@@ -1,6 +1,5 @@
 package com.example.kitchenkompanion
 
-import android.icu.text.Transliterator.Position
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,19 +9,25 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Button
+import android.widget.Toast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-//todo: add images, integrate with shopping list
-
 class RecipesFragment : Fragment() {
+    // Define interface for shopping list interaction
+    interface ShoppingListListener {
+        fun addIngredientsToShoppingList(ingredients: List<String>, recipeName: String)
+    }
+
+    // Listener property - may be null if parent doesn't implement interface
+    private var shoppingListListener: ShoppingListListener? = null
+
     data class RecipeItem(
         val name: String,
         val description: String,
         val ingredients: List<String>,
-        val tags: List<String>,
-        val img: Int
+        val tags: List<String>
     )
-
 
     private val allRecipeItems = listOf(
         RecipeItem(
@@ -35,8 +40,7 @@ class RecipesFragment : Fragment() {
                 "Salt to taste",
                 "Red pepper flakes (optional)"
             ),
-            listOf("Vegetarian", "Breakfast", "Snack", "Halal", "Kosher"),
-            R.drawable.avocado_toast
+            listOf("Vegetarian", "Breakfast", "Snack", "Halal", "Kosher")
         ),
         RecipeItem(
             "Scrambled Eggs",
@@ -47,8 +51,7 @@ class RecipesFragment : Fragment() {
                 "1 tsp butter",
                 "Salt and pepper to taste"
             ),
-            listOf("Vegetarian","Breakfast","Halal", "Kosher"),
-            R.drawable.scrampled_eggs
+            listOf("Vegetarian","Breakfast","Halal", "Kosher")
         ),
         RecipeItem(
             "Tuna Salad",
@@ -61,8 +64,7 @@ class RecipesFragment : Fragment() {
                 "Salt and pepper to taste",
                 "Lettuce or bread for serving"
             ),
-            listOf("Fish", "Kosher"),
-            R.drawable.tuna_salad
+            listOf("Fish", "Kosher")
         ),
         RecipeItem(
             "Caprese Salad",
@@ -75,8 +77,7 @@ class RecipesFragment : Fragment() {
                 "1 tbsp balsamic glaze",
                 "Salt and pepper to taste"
             ),
-            listOf("Vegetarian", "Halal", "Kosher"),
-            R.drawable.caprese_salad
+            listOf("Vegetarian", "Halal", "Kosher")
         ),
         RecipeItem(
             "Microwave Oatmeal",
@@ -87,13 +88,20 @@ class RecipesFragment : Fragment() {
                 "Pinch of salt",
                 "Fruit and nuts for topping"
             ),
-            listOf("Vegetarian", "Breakfast"),
-            R.drawable.oatmeal
+            listOf("Vegetarian", "Breakfast")
         )
     )
+
     private val checked = mutableMapOf<String, Boolean>().withDefault { false }
     private val filteredRecipes = mutableListOf<RecipeItem>()
 
+    override fun onAttach(context: android.content.Context) {
+        super.onAttach(context)
+        // Try to get shopping list listener from parent activity
+        if (context is ShoppingListListener) {
+            shoppingListListener = context
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -110,25 +118,28 @@ class RecipesFragment : Fragment() {
 
         setupFilterCheckboxes(view)
         setupRecipeClickListeners(view)
+        updateVisibleRecipes()
     }
 
     private fun setupRecipeClickListeners(view: View) {
         // Set up recipe listeners
-        listOf<LinearLayout>(
+        listOf(
             view.findViewById<LinearLayout>(R.id.ll1),
             view.findViewById<LinearLayout>(R.id.ll2),
             view.findViewById<LinearLayout>(R.id.ll3),
             view.findViewById<LinearLayout>(R.id.ll4),
             view.findViewById<LinearLayout>(R.id.ll5)
         ).forEachIndexed { index, layout ->
-            layout.setOnClickListener {
-                showRecipeDialog(filteredRecipes[index])
+            layout?.setOnClickListener {
+                if (index < filteredRecipes.size) {
+                    showRecipeDialog(filteredRecipes[index])
+                }
             }
         }
     }
 
     private fun setupFilterCheckboxes(view: View) {
-        val checkBoxes = listOf(
+        listOf(
             view.findViewById<CheckBox>(R.id.cbVegetarian),
             view.findViewById<CheckBox>(R.id.cbBeef),
             view.findViewById<CheckBox>(R.id.cbChicken),
@@ -138,15 +149,13 @@ class RecipesFragment : Fragment() {
             view.findViewById<CheckBox>(R.id.cbKosher),
             view.findViewById<CheckBox>(R.id.cbBreakfast),
             view.findViewById<CheckBox>(R.id.cbSnack)
-        )
-
-
-        checkBoxes.forEach { checkbox ->
-            checkbox.setOnCheckedChangeListener { _, isChecked ->
-                checked[checkbox.text.toString()] = isChecked
+        ).forEach { checkbox ->
+            checkbox?.setOnCheckedChangeListener { _, isChecked ->
+                checkbox.text?.toString()?.let {
+                    checked[it] = isChecked
+                }
                 filterRecipes()
                 updateVisibleRecipes()
-                setupRecipeClickListeners(view)
             }
         }
     }
@@ -183,86 +192,103 @@ class RecipesFragment : Fragment() {
             view?.findViewById<LinearLayout>(R.id.ll5)
         )
 
+        // Hide all recipe layouts first
         recipeLayouts.forEach { it?.visibility = View.GONE }
 
+        // Show "no recipes" message if filtered list is empty
+        view?.findViewById<TextView>(R.id.tvNoRecipes)?.visibility =
+            if (filteredRecipes.isEmpty()) View.VISIBLE else View.GONE
+
+        // Show only filtered recipes
         filteredRecipes.take(recipeLayouts.size).forEachIndexed { index, recipeItem ->
             if (index < recipeLayouts.size) {
                 recipeLayouts[index]?.visibility = View.VISIBLE
-                updateRecipeView(recipeLayouts[index], recipeItem, index)
+                updateRecipeView(recipeLayouts[index], recipeItem)
             }
         }
     }
 
-    private fun updateRecipeView(linearLayout: LinearLayout?, recipeItem: RecipeItem, position: Int) {
+    private fun updateRecipeView(linearLayout: LinearLayout?, recipeItem: RecipeItem) {
         linearLayout?.let {
-            val name = when(position){
-                0 -> R.id.tvName1
-                1 -> R.id.tvName2
-                2 -> R.id.tvName3
-                3 -> R.id.tvName4
-                4 -> R.id.tvName5
-                else -> return
+            when (it.id) {
+                R.id.ll1 -> {
+                    it.findViewById<TextView>(R.id.tvName1)?.text = recipeItem.name
+                    it.findViewById<TextView>(R.id.tvDescription1)?.text = recipeItem.description
+                }
+                R.id.ll2 -> {
+                    it.findViewById<TextView>(R.id.tvName2)?.text = recipeItem.name
+                    it.findViewById<TextView>(R.id.tvDescription2)?.text = recipeItem.description
+                }
+                R.id.ll3 -> {
+                    it.findViewById<TextView>(R.id.tvName3)?.text = recipeItem.name
+                    it.findViewById<TextView>(R.id.tvDescription3)?.text = recipeItem.description
+                }
+                R.id.ll4 -> {
+                    it.findViewById<TextView>(R.id.tvName4)?.text = recipeItem.name
+                    it.findViewById<TextView>(R.id.tvDescription4)?.text = recipeItem.description
+                }
+                R.id.ll5 -> {
+                    it.findViewById<TextView>(R.id.tvName5)?.text = recipeItem.name
+                    it.findViewById<TextView>(R.id.tvDescription5)?.text = recipeItem.description
+                }
             }
-            val desc = when(position){
-                0 -> R.id.tvDescription1
-                1 -> R.id.tvDescription2
-                2 -> R.id.tvDescription3
-                3 -> R.id.tvDescription4
-                4 -> R.id.tvDescription5
-                else -> return
-            }
-
-            val img = when(position){
-                0 -> R.id.img1
-                1 -> R.id.img2
-                2 -> R.id.img3
-                3 -> R.id.img4
-                4 -> R.id.img5
-                else -> return
-            }
-
-            it.findViewById<TextView>(name)?.text = recipeItem.name
-            it.findViewById<TextView>(desc)?.text = recipeItem.description
-            it.findViewById<ImageView>(img)?.setImageResource(recipeItem.img)
         }
     }
 
     private fun showRecipeDialog(recipe: RecipeItem) {
-        val dialogView =
-            LayoutInflater.from(requireContext()).inflate(R.layout.recipes_popup, null)
+        // Inflate the recipes_popup.xml layout
+        val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.recipes_popup, null)
+
+        // Find views in the dialog layout
         val ingredientsContainer = dialogView.findViewById<LinearLayout>(R.id.llIngredients)
+        val nameTextView = dialogView.findViewById<TextView>(R.id.tvRecipeName)
+        val tagsTextView = dialogView.findViewById<TextView>(R.id.tvRecipeTags)
+        val descriptionTextView = dialogView.findViewById<TextView>(R.id.tvRecipeDescription)
+        val closeButton = dialogView.findViewById<ImageView>(R.id.ivClose)
 
-        dialogView.findViewById<ImageView>(R.id.ivRecipeImage).setImageResource(recipe.img)
-        dialogView.findViewById<TextView>(R.id.tvRecipeName).text = recipe.name
-        dialogView.findViewById<TextView>(R.id.tvRecipeTags).text = recipe.tags.joinToString(", ")
-        dialogView.findViewById<TextView>(R.id.tvRecipeDescription).text = recipe.description
+        // Set recipe details
+        nameTextView?.text = recipe.name
+        tagsTextView?.text = recipe.tags.joinToString(", ")
+        descriptionTextView?.text = recipe.description
 
-        ingredientsContainer.removeAllViews()
+        // Add ingredients to the container
+        ingredientsContainer?.removeAllViews()
         recipe.ingredients.forEach { ingredient ->
             TextView(requireContext()).apply {
                 text = "• $ingredient"
                 textSize = 16f
                 setPadding(0, 4, 0, 4)
-                ingredientsContainer.addView(this)
+                ingredientsContainer?.addView(this)
             }
         }
 
-        MaterialAlertDialogBuilder(requireContext())
+        // Try to find and set up the "Add to Shopping List" button if it exists
+        dialogView.findViewById<Button>(R.id.btnAddToShoppingList)?.setOnClickListener {
+            // Use shopping list listener if available
+            shoppingListListener?.addIngredientsToShoppingList(recipe.ingredients, recipe.name)
+
+            // Show confirmation message
+            Toast.makeText(context, "Added to shopping list", Toast.LENGTH_SHORT).show()
+        }
+
+        // Create and show the dialog
+        val dialog = MaterialAlertDialogBuilder(requireContext())
             .setView(dialogView)
             .setBackground(resources.getDrawable(R.drawable.recipe_background, null))
             .show()
-            .also { dialog ->
-                dialog.window?.let { window ->
-                    window.setLayout(
-                        ViewGroup.LayoutParams.MATCH_PARENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                    )
-                    window.setBackgroundDrawableResource(R.drawable.recipe_background)
-                }
-                dialogView.findViewById<ImageView>(R.id.ivClose).setOnClickListener {
-                    dialog.dismiss()
-                }
-            }
-    }
 
+        // Configure dialog window
+        dialog.window?.let { window ->
+            window.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            window.setBackgroundDrawableResource(R.drawable.recipe_background)
+        }
+
+        // Set up close button
+        closeButton?.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
 }

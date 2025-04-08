@@ -27,6 +27,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:text="@string/app_title"
                 android:textStyle="bold"
                 android:textSize="22sp"/>
 
@@ -36,6 +37,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="16dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/profile"
                 android:src="@android:drawable/ic_menu_myplaces"
                 android:padding="4dp" />
 
@@ -44,6 +46,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/settings"
                 android:src="@android:drawable/ic_menu_manage"
                 android:padding="4dp" />
         </LinearLayout>
@@ -66,6 +69,7 @@
                     android:id="@+id/expiringSoonTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/expiring_soon"
                     android:textColor="#000000"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -76,6 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/expiringSoonTitle"
                     android:layout_marginTop="8dp"
+                    android:text="@string/pear"
                     android:textColor="#000000"
                     android:textSize="28sp"
                     android:textStyle="bold" />
@@ -86,6 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/expiringSoonItem"
                     android:layout_marginTop="4dp"
+                    android:text="@string/two_days_left"
                     android:textColor="#000000"
                     android:textSize="28sp"
                     android:textStyle="bold" />
@@ -101,6 +107,7 @@
                         android:id="@+id/expiringSoonImage"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
+                        android:contentDescription="@string/expiring_food_image"
                         android:src="@drawable/default_image" />
 
                     <ImageButton
@@ -109,6 +116,7 @@
                         android:layout_height="40dp"
                         android:layout_gravity="end|center_vertical"
                         android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/next_item"
                         android:src="@android:drawable/ic_media_next"
                         android:elevation="2dp" />
                 </FrameLayout>
@@ -126,13 +134,98 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- Expired Items Section -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FDECEA"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/expiredSoonTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⚠️ Expired Items"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/expiredSoonItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/expiredSoonTitle"
+                    android:layout_marginTop="8dp"
+                    android:text="Strawberry"
+                    android:textColor="#000000"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/expiredSoonDays"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/expiredSoonItem"
+                    android:layout_marginTop="4dp"
+                    android:text="3 Days Ago"
+                    android:textColor="#000000"
+                    android:textSize="28sp"
+                    android:textStyle="bold" />
+
+                <FrameLayout
+                    android:id="@+id/expiredImageContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/expiredSoonImage"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:contentDescription="Expired Item Image"
+                        android:src="@drawable/default_image" />
+
+                    <ImageButton
+                        android:id="@+id/expiredNextItemButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="Next expired item"
+                        android:src="@android:drawable/ic_media_next"
+                        android:elevation="2dp" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/expiredIndicatorContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/expiredSoonDays"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
         <!-- Recently Added Section -->
         <TextView
-            android:id="@+id/recentlyAddedTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:text="@string/recently_added"
             android:textColor="#000000"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -154,7 +247,6 @@
 
                 <!-- Item 1 -->
                 <LinearLayout
-                    android:id="@+id/recentItem1Container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -164,18 +256,18 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:id="@+id/recentItem1Image"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/default_image" />
+                        android:src="@drawable/melon"
+                        android:contentDescription="@string/melon_image" />
 
                     <TextView
-                        android:id="@+id/recentItem1Text"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
+                        android:text="@string/melon_5_days_left"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
@@ -184,12 +276,12 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/favorite"
                         android:src="@android:drawable/btn_star" />
                 </LinearLayout>
 
                 <!-- Item 2 -->
                 <LinearLayout
-                    android:id="@+id/recentItem2Container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -199,18 +291,18 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:id="@+id/recentItem2Image"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/default_image" />
+                        android:src="@drawable/carrot"
+                        android:contentDescription="@string/carrot_image" />
 
                     <TextView
-                        android:id="@+id/recentItem2Text"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
+                        android:text="@string/carrot_10_days_left"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
@@ -219,12 +311,12 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/favorite"
                         android:src="@android:drawable/btn_star" />
                 </LinearLayout>
 
                 <!-- Item 3 -->
                 <LinearLayout
-                    android:id="@+id/recentItem3Container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -234,18 +326,18 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:id="@+id/recentItem3Image"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:src="@drawable/default_image" />
+                        android:src="@drawable/bread"
+                        android:contentDescription="@string/mushroom_image" />
 
                     <TextView
-                        android:id="@+id/recentItem3Text"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="16dp"
                         android:layout_weight="1"
+                        android:text="bread - 4 days left"
                         android:textColor="#000000"
                         android:textSize="16sp" />
 
@@ -254,12 +346,115 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/favorite"
+                        android:src="@android:drawable/btn_star" />
+                </LinearLayout>
+                <!-- Item 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/watermelon"
+                        android:contentDescription="@string/mushroom_image" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="watermelon - 6 days left"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+                    <ImageButton
+                        android:id="@+id/favoriteItem4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/favorite"
+                        android:src="@android:drawable/btn_star" />
+                </LinearLayout>
+                <!-- Item 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/tomato"
+                        android:contentDescription="@string/mushroom_image" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="tomato - 2 days left"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+                    <ImageButton
+                        android:id="@+id/favoriteItem5"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/favorite"
+                        android:src="@android:drawable/btn_star" />
+                </LinearLayout>
+                <!-- Item 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/orange"
+                        android:contentDescription="@string/mushroom_image" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
+                        android:text="orange - 4 days left"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+                    <ImageButton
+                        android:id="@+id/favoriteItem6"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/favorite"
                         android:src="@android:drawable/btn_star" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Add extra space at the bottom for the navigation bar -->
+
         <View
             android:layout_width="match_parent"
             android:layout_height="70dp" />
