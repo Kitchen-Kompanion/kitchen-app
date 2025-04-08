@@ -23,6 +23,7 @@
         app:tabMode="fixed"
         app:tabIndicatorColor="?colorPrimary"
         android:background="@android:color/white"
+        app:tabTextAppearance="@style/CustomTabText"
         android:layout_alignParentBottom="true">
 
         <com.google.android.material.tabs.TabItem
