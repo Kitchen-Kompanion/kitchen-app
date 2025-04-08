@@ -17,13 +17,9 @@ object InventoryManager {
         sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         loadInventory()
 
-        // Base item
-
-        //sharedPrefs.edit().putBoolean("initialized", false).apply()
         val isInitialized = sharedPrefs.getBoolean("initialized", false)
 
         if (!isInitialized) {
-            // just one time thing
             inventoryList.addAll(
                 listOf(
                     InventoryItem("Apple", "Kyumin", "Fruits", 5, "2025-04-15"),
@@ -38,7 +34,6 @@ object InventoryManager {
             )
             saveInventory()
 
-            // 플래그 저장: 다음부턴 추가 안되게
             sharedPrefs.edit().putBoolean("initialized", true).apply()
         } else {
             loadInventory()

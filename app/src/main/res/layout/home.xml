@@ -215,10 +215,6 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-
-
-
-
         <!-- Recently Added Section -->
         <TextView
             android:layout_width="wrap_content"
@@ -453,7 +449,6 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
 
         <View
             android:layout_width="match_parent"

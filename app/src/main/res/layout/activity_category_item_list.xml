@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- back-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +39,6 @@
                 android:textColor="#333333" />
         </RelativeLayout>
 
-        <!-- item grid -->
         <GridLayout
             android:id="@+id/category_grid_container"
             android:layout_width="match_parent"

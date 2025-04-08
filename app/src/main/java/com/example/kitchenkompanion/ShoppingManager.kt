@@ -17,10 +17,8 @@ object ShoppingManager {
         sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         loadShoppingList()
 
-        // Check if we need to initialize with default items
         val isInitialized = sharedPrefs.getBoolean("shopping_initialized", false)
         if (!isInitialized) {
-            // Initialize with default items
             shoppingList.addAll(
                 listOf(
                     ShoppingItem("Watermelon", 3, 15.99, false),
@@ -31,7 +29,6 @@ object ShoppingManager {
             )
             saveShoppingList()
 
-            // Set initialized flag
             sharedPrefs.edit().putBoolean("shopping_initialized", true).apply()
         }
     }
@@ -60,7 +57,6 @@ object ShoppingManager {
     }
 
     fun removeItem(item: ShoppingItem) {
-        // Find and remove by matching properties rather than object reference
         shoppingList.removeAll {
             it.name == item.name && it.price == item.price && it.quantity == item.quantity
         }

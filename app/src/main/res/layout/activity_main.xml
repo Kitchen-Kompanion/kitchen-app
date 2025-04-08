@@ -47,11 +47,6 @@
             android:icon="@drawable/recipies"
             android:text="Recipies"/>
 
-
-
-
-
-
     </com.google.android.material.tabs.TabLayout>
 
 </RelativeLayout>

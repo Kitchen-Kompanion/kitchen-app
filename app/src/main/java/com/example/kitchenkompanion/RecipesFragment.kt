@@ -14,12 +14,10 @@ import android.widget.Toast
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class RecipesFragment : Fragment() {
-    // Define interface for shopping list interaction
     interface ShoppingListListener {
         fun addIngredientsToShoppingList(ingredients: List<String>, recipeName: String)
     }
 
-    // Listener property - may be null if parent doesn't implement interface
     private var shoppingListListener: ShoppingListListener? = null
 
     data class RecipeItem(
@@ -104,7 +102,6 @@ class RecipesFragment : Fragment() {
 
     override fun onAttach(context: android.content.Context) {
         super.onAttach(context)
-        // Try to get shopping list listener from parent activity
         if (context is ShoppingListListener) {
             shoppingListListener = context
         }
@@ -114,7 +111,6 @@ class RecipesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.recipes, container, false)
     }
 
@@ -129,7 +125,6 @@ class RecipesFragment : Fragment() {
     }
 
     private fun setupRecipeClickListeners(view: View) {
-        // Set up recipe listeners
         listOf(
             view.findViewById<LinearLayout>(R.id.ll1),
             view.findViewById<LinearLayout>(R.id.ll2),
@@ -199,14 +194,11 @@ class RecipesFragment : Fragment() {
             view?.findViewById<LinearLayout>(R.id.ll5)
         )
 
-        // Hide all recipe layouts first
         recipeLayouts.forEach { it?.visibility = View.GONE }
 
-        // Show "no recipes" message if filtered list is empty
         view?.findViewById<TextView>(R.id.tvNoRecipes)?.visibility =
             if (filteredRecipes.isEmpty()) View.VISIBLE else View.GONE
 
-        // Show only filtered recipes
         filteredRecipes.take(recipeLayouts.size).forEachIndexed { index, recipeItem ->
             if (index < recipeLayouts.size) {
                 recipeLayouts[index]?.visibility = View.VISIBLE
@@ -254,10 +246,8 @@ class RecipesFragment : Fragment() {
     }
 
     private fun showRecipeDialog(recipe: RecipeItem) {
-        // Inflate the recipes_popup.xml layout
         val dialogView = LayoutInflater.from(requireContext()).inflate(R.layout.recipes_popup, null)
 
-        // Find views in the dialog layout
         val imageView = dialogView.findViewById<ImageView>(R.id.ivRecipeImage)
         val ingredientsContainer = dialogView.findViewById<LinearLayout>(R.id.llIngredients)
         val nameTextView = dialogView.findViewById<TextView>(R.id.tvRecipeName)
@@ -265,13 +255,11 @@ class RecipesFragment : Fragment() {
         val descriptionTextView = dialogView.findViewById<TextView>(R.id.tvRecipeDescription)
         val closeButton = dialogView.findViewById<ImageView>(R.id.ivClose)
 
-        // Set recipe details
         imageView?.setImageResource(recipe.img)
         nameTextView?.text = recipe.name
         tagsTextView?.text = recipe.tags.joinToString(", ")
         descriptionTextView?.text = recipe.description
 
-        // Add ingredients to the container
         ingredientsContainer?.removeAllViews()
         recipe.ingredients.forEach { ingredient ->
             TextView(requireContext()).apply {
@@ -282,22 +270,17 @@ class RecipesFragment : Fragment() {
             }
         }
 
-        // Try to find and set up the "Add to Shopping List" button if it exists
         dialogView.findViewById<Button>(R.id.btnAddToShoppingList)?.setOnClickListener {
-            // Use shopping list listener if available
             shoppingListListener?.addIngredientsToShoppingList(recipe.ingredients, recipe.name)
 
-            // Show confirmation message
             Toast.makeText(context, "Added to shopping list", Toast.LENGTH_SHORT).show()
         }
 
-        // Create and show the dialog
         val dialog = MaterialAlertDialogBuilder(requireContext())
             .setView(dialogView)
             .setBackground(resources.getDrawable(R.drawable.recipe_background, null))
             .show()
 
-        // Configure dialog window
         dialog.window?.let { window ->
             window.setLayout(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -306,7 +289,6 @@ class RecipesFragment : Fragment() {
             window.setBackgroundDrawableResource(R.drawable.recipe_background)
         }
 
-        // Set up close button
         closeButton?.setOnClickListener {
             dialog.dismiss()
         }

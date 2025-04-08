@@ -21,10 +21,10 @@ object PriceHelper {
         "onion" to 1.49,
         "carrot" to 1.79,
         "yogurt" to 1.25,
-        // ... 필요한 항목 계속 추가 가능
+        // ... Add more in here
     )
 
     fun getPrice(itemName: String): Double {
-        return priceMap[itemName.lowercase()] ?: 1.99 // default price
+        return priceMap[itemName.lowercase()] ?: 1.99
     }
 }

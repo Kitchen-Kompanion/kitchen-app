@@ -30,14 +30,11 @@ object HomeManager {
         sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         loadItems()
 
-        // Initialize with default items if empty
         val isInitialized = sharedPrefs.getBoolean("home_initialized", false)
         if (!isInitialized) {
-            // Initialize with default expiring items
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
             val today = Calendar.getInstance()
 
-            // Create some items with expiry dates
             val items = listOf(
                 FoodItem("Pear", getDateString(today, 2), "Fruits"),
                 FoodItem("Apple", getDateString(today, 3), "Fruits"),
@@ -46,7 +43,6 @@ object HomeManager {
                 FoodItem("Milk", getDateString(today, 2), "Dairy")
             )
 
-            // Create some recent items
             val recentItems = listOf(
                 FoodItem("Melon", getDateString(today, 5), "Fruits"),
                 FoodItem("Carrot", getDateString(today, 10), "Vegetables"),
@@ -58,7 +54,6 @@ object HomeManager {
 
             saveItems()
 
-            // Set initialized flag
             sharedPrefs.edit().putBoolean("home_initialized", true).apply()
         }
     }
@@ -103,7 +98,6 @@ object HomeManager {
     }
 
     fun getExpiringItems(): List<FoodItem> {
-        // Sort by expiry date (closest first)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
         return expiringItems.sortedBy {
             try {
@@ -149,8 +143,6 @@ object HomeManager {
     }
 
     fun getExpiringItemsFromInventory(): List<FoodItem> {
-        // This would normally integrate with your InventoryManager
-        // For now, we'll just return the expiring items we have
         return getExpiringItems()
     }
 

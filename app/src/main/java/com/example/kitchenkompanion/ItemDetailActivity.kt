@@ -52,8 +52,8 @@ class ItemDetailActivity : AppCompatActivity() {
                 expireDate = expireEdit.text.toString()
             )
 
-            InventoryManager.removeItem(item)     // item delete
-            InventoryManager.addItem(updatedItem) // item add
+            InventoryManager.removeItem(item)
+            InventoryManager.addItem(updatedItem)
             InventoryManager.saveItemsToPrefs(this)
 
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show()
