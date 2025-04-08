@@ -24,8 +24,8 @@
         <!-- item image-->
         <ImageView
             android:id="@+id/detail_image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_gravity="center"
             android:layout_marginBottom="24dp"
             android:scaleType="centerCrop"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:padding="4dp"
+            android:padding="10dp"
             android:layout_marginBottom="4dp"
             android:elevation="4dp">
 
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:padding="4dp"
+            android:padding="10dp"
             android:layout_marginBottom="4dp"
             android:elevation="4dp">
 
@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:padding="4dp"
+            android:padding="10dp"
             android:layout_marginBottom="4dp"
             android:elevation="4dp">
 
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:padding="4dp"
+            android:padding="10dp"
             android:layout_marginBottom="4dp"
             android:elevation="4dp">
 
@@ -149,7 +149,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#FFFFFF"
-            android:padding="4dp"
+            android:padding="10dp"
             android:layout_marginBottom="4dp"
             android:elevation="4dp">
 
