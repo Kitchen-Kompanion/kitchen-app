@@ -146,7 +146,9 @@ class ShoppingFragment : Fragment() {
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
-            ).apply { bottomMargin = dpToPx(8) }
+            ).apply {
+                bottomMargin = dpToPx(8)
+            }
             gravity = Gravity.CENTER_VERTICAL
             setPadding(dpToPx(8), dpToPx(8), dpToPx(8), dpToPx(8))
             setBackgroundColor(Color.parseColor("#EEEEEE"))
@@ -164,37 +166,35 @@ class ShoppingFragment : Fragment() {
         val imageView = ImageView(context).apply {
             layoutParams = LinearLayout.LayoutParams(dpToPx(48), dpToPx(48)).apply {
                 leftMargin = dpToPx(8)
+                rightMargin = dpToPx(8)
             }
             setImageResource(ImageHelper.getImageResId(item.name))
             contentDescription = "Image of ${item.name}"
         }
 
-        val detailsLayout = LinearLayout(context).apply {
-            orientation = LinearLayout.VERTICAL
-            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f).apply {
-                leftMargin = dpToPx(16)
-            }
-        }
-
-        val nameTextView = TextView(context).apply {
-            text = item.name
+        val nameAndQtyTextView = TextView(context).apply {
+            text = "${item.name} (Qty: ${item.quantity})"
             textSize = 16f
             setTypeface(null, Typeface.BOLD)
-        }
-
-        val quantityTextView = TextView(context).apply {
-            text = "Qty: ${item.quantity}"
-            textSize = 14f
         }
 
         val priceTextView = TextView(context).apply {
             text = currencyFormatter.format(item.price * item.quantity)
             textSize = 16f
             setTypeface(null, Typeface.BOLD)
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                leftMargin = dpToPx(8)
+            }
         }
 
-        detailsLayout.addView(nameTextView)
-        detailsLayout.addView(quantityTextView)
+        val detailsLayout = LinearLayout(context).apply {
+            orientation = LinearLayout.VERTICAL
+            layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+            addView(nameAndQtyTextView)
+        }
 
         rowLayout.addView(checkbox)
         rowLayout.addView(imageView)
@@ -203,6 +203,7 @@ class ShoppingFragment : Fragment() {
 
         return rowLayout
     }
+
 
     private fun findShoppingItemsContainer(view: View): ViewGroup {
         val cards = mutableListOf<CardView>()
