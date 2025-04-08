@@ -1,8 +1,8 @@
 package com.example.kitchenkompanion
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +11,13 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 
 class HomeFragment : Fragment() {
 
-    // Food data models
     data class FoodItem(
         val name: String,
         val daysLeft: Int,
@@ -22,207 +25,132 @@ class HomeFragment : Fragment() {
         var isFavorite: Boolean = false
     )
 
-    // Sample data - replace with your database implementation
-    private val expiringItems = listOf(
-        FoodItem("Pear", 2, R.drawable.default_image),
-        FoodItem("Apple", 3, R.drawable.apple),
-        FoodItem("Banana", 1, R.drawable.banana),
-        FoodItem("Orange", 4, R.drawable.orange),
-        FoodItem("Milk", 2, R.drawable.milk)
-    )
+    private lateinit var expiringItems: List<FoodItem>
+    private lateinit var expiredItems: List<FoodItem>
 
-    private val recentItems = listOf(
-        FoodItem("Melon", 5, R.drawable.melon),
-        FoodItem("Carrot", 10, R.drawable.carrot),
-        FoodItem("Mushroom", 4, R.drawable.default_image)
-    )
-
-    private var currentExpiringItemIndex = 0
-
-    // The app uses a fixed set of indicator dots
+    private var currentExpiringIndex = 0
+    private var currentExpiredIndex = 0
     private val maxIndicators = 5
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.home, container, false)
-    }
+    ): View? = inflater.inflate(R.layout.home, container, false)
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Setup UI components
         setupTopButtons(view)
-        setupExpiringItemsCarousel(view)
-        setupRecentItemsList(view)
+        loadItems(view)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onResume() {
+        super.onResume()
+        view?.let { loadItems(it) }
     }
 
     private fun setupTopButtons(view: View) {
-        val profileButton = view.findViewById<ImageButton>(R.id.profileButton)
-        profileButton?.setOnClickListener {
+        view.findViewById<ImageButton>(R.id.profileButton)?.setOnClickListener {
             Toast.makeText(context, R.string.profile_toast, Toast.LENGTH_SHORT).show()
-            // Navigate to profile screen
         }
-
-        val settingsButton = view.findViewById<ImageButton>(R.id.settingsButton)
-        settingsButton?.setOnClickListener {
+        view.findViewById<ImageButton>(R.id.settingsButton)?.setOnClickListener {
             Toast.makeText(context, R.string.settings_toast, Toast.LENGTH_SHORT).show()
-            // Navigate to settings screen
         }
     }
 
-    private fun setupExpiringItemsCarousel(view: View) {
-        // Check if list is empty to prevent crashes
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun loadItems(view: View) {
+        InventoryManager.init(requireContext())
+        val today = LocalDate.now()
+        val allItems = InventoryManager.getItems()
+
+        expiringItems = allItems.mapNotNull {
+            try {
+                val date = LocalDate.parse(it.expireDate)
+                val days = ChronoUnit.DAYS.between(today, date).toInt()
+                if (days >= 0) FoodItem(it.name, days, ImageHelper.getImageResId(it.name)) else null
+            } catch (e: Exception) { null }
+        }.sortedBy { it.daysLeft }.take(5)
+
+        expiredItems = allItems.mapNotNull {
+            try {
+                val date = LocalDate.parse(it.expireDate)
+                val days = ChronoUnit.DAYS.between(date, today).toInt()
+                if (days > 0) FoodItem(it.name, -days, ImageHelper.getImageResId(it.name)) else null
+            } catch (e: Exception) { null }
+        }.sortedBy { it.daysLeft }
+
+        updateExpiringDisplay(view)
+        updateExpiredDisplay(view)
+    }
+
+    private fun updateExpiringDisplay(view: View) {
         if (expiringItems.isEmpty()) {
-            val itemNameTextView = view.findViewById<TextView>(R.id.expiringSoonItem)
-            itemNameTextView?.setText(R.string.no_expiring_items)
-
-            val daysTextView = view.findViewById<TextView>(R.id.expiringSoonDays)
-            daysTextView?.setText(R.string.add_items_to_track)
-
-            val nextButton = view.findViewById<ImageButton>(R.id.nextItemButton)
-            nextButton?.isEnabled = false
+            view.findViewById<TextView>(R.id.expiringSoonItem)?.text = "No expiring items"
+            view.findViewById<TextView>(R.id.expiringSoonDays)?.text = "All fresh!"
+            view.findViewById<ImageView>(R.id.expiringSoonImage)?.setImageResource(R.drawable.default_image)
+            view.findViewById<ImageButton>(R.id.nextItemButton)?.isEnabled = false
             return
         }
 
-        // Display the first expiring item
-        updateExpiringItemDisplay(view)
+        val item = expiringItems[currentExpiringIndex]
+        view.findViewById<TextView>(R.id.expiringSoonItem)?.text = item.name
+        view.findViewById<TextView>(R.id.expiringSoonDays)?.text =
+            if (item.daysLeft == 0) "Expires Today" else "${item.daysLeft} days left"
+        view.findViewById<ImageView>(R.id.expiringSoonImage)?.setImageResource(item.imageResId)
 
-        // Setup next button for carousel
-        val nextButton = view.findViewById<ImageButton>(R.id.nextItemButton)
-        nextButton?.setOnClickListener {
-            currentExpiringItemIndex = (currentExpiringItemIndex + 1) % expiringItems.size
-            updateExpiringItemDisplay(view)
+        view.findViewById<ImageButton>(R.id.nextItemButton)?.apply {
+            isEnabled = expiringItems.size > 1
+            setOnClickListener {
+                currentExpiringIndex = (currentExpiringIndex + 1) % expiringItems.size
+                updateExpiringDisplay(view)
+            }
         }
+
+        updateDots(view, R.id.indicatorContainer, currentExpiringIndex, expiringItems.size)
     }
 
-    private fun updateExpiringItemDisplay(view: View) {
-        val currentItem = expiringItems[currentExpiringItemIndex]
-
-        // Update the UI with current item's details
-        val itemNameTextView = view.findViewById<TextView>(R.id.expiringSoonItem)
-        itemNameTextView?.text = currentItem.name
-
-        // Format days text based on days left
-        val daysText = when (currentItem.daysLeft) {
-            0 -> getString(R.string.expires_today)
-            1 -> getString(R.string.one_day_left)
-            else -> getString(R.string.days_left_format, currentItem.daysLeft)
+    private fun updateExpiredDisplay(view: View) {
+        if (expiredItems.isEmpty()) {
+            view.findViewById<TextView>(R.id.expiredSoonItem)?.text = "No expired items"
+            view.findViewById<TextView>(R.id.expiredSoonDays)?.text = "You're doing great!"
+            view.findViewById<ImageView>(R.id.expiredSoonImage)?.setImageResource(R.drawable.default_image)
+            view.findViewById<ImageButton>(R.id.expiredNextItemButton)?.isEnabled = false
+            return
         }
 
-        val daysTextView = view.findViewById<TextView>(R.id.expiringSoonDays)
-        daysTextView?.text = daysText
+        val item = expiredItems[currentExpiredIndex]
+        view.findViewById<TextView>(R.id.expiredSoonItem)?.text = item.name
+        view.findViewById<TextView>(R.id.expiredSoonDays)?.text = "${-item.daysLeft} days ago"
+        view.findViewById<ImageView>(R.id.expiredSoonImage)?.setImageResource(item.imageResId)
 
-        // Set image or default if resource not found
-        val imageView = view.findViewById<ImageView>(R.id.expiringSoonImage)
-        try {
-            imageView?.setImageResource(currentItem.imageResId)
-        } catch (e: Exception) {
-            imageView?.setImageResource(R.drawable.default_image)
+        view.findViewById<ImageButton>(R.id.expiredNextItemButton)?.apply {
+            isEnabled = expiredItems.size > 1
+            setOnClickListener {
+                currentExpiredIndex = (currentExpiredIndex + 1) % expiredItems.size
+                updateExpiredDisplay(view)
+            }
         }
 
-        // Update indicator dots
-        updateIndicatorDots(view)
+        updateDots(view, R.id.expiredIndicatorContainer, currentExpiredIndex, expiredItems.size)
     }
 
-    private fun updateIndicatorDots(view: View) {
-        // Get container view that holds the indicators
-        val container = view.findViewById<LinearLayout>(R.id.indicatorContainer) ?: return
-
-        // Clear existing indicators if any
+    private fun updateDots(view: View, containerId: Int, currentIndex: Int, total: Int) {
+        val container = view.findViewById<LinearLayout>(containerId) ?: return
         container.removeAllViews()
-
-        // Create new indicators based on number of items (max 5)
-        val totalDots = minOf(expiringItems.size, maxIndicators)
-
-        // Define dot sizes and colors directly to avoid resource dependencies
-        val dotSize = 8 // 8dp
-        val dotMargin = 2 // 2dp
-        val activeColor = Color.BLACK
-        val inactiveColor = Color.GRAY
-
-        for (i in 0 until totalDots) {
-            val dotView = View(context)
-
-            // Convert dp to pixels
-            val density = resources.displayMetrics.density
-            val sizePx = (dotSize * density).toInt()
-            val marginPx = (dotMargin * density).toInt()
-
-            val params = LinearLayout.LayoutParams(sizePx, sizePx)
-            params.setMargins(marginPx, 0, marginPx, 0)
-            dotView.layoutParams = params
-
-            // Set active/inactive state
-            if (i == currentExpiringItemIndex) {
-                dotView.setBackgroundColor(activeColor)
-            } else {
-                dotView.setBackgroundColor(inactiveColor)
-            }
-
-            container.addView(dotView)
-        }
-    }
-
-    private fun setupRecentItemsList(view: View) {
-        // Check if list is empty
-        if (recentItems.isEmpty()) {
-            // Hide the section or show empty state
-            val recentItemsCard = view.findViewById<View>(R.id.recentItemsCard)
-            recentItemsCard?.visibility = View.GONE
-            return
-        }
-
-        // Initialize favorite buttons with correct state
-        setupFavoriteButtons(view)
-    }
-
-    private fun setupFavoriteButtons(view: View) {
-        // Set up favorite buttons with initial states
-        val favoriteButtons = listOf(
-            view.findViewById<ImageButton>(R.id.favoriteItem1),
-            view.findViewById<ImageButton>(R.id.favoriteItem2),
-            view.findViewById<ImageButton>(R.id.favoriteItem3)
-        )
-
-        // Initialize buttons with correct favorite state
-        for (i in recentItems.indices) {
-            if (i < favoriteButtons.size) {
-                val button = favoriteButtons[i]
-
-                // Set initial button state
-                if (recentItems[i].isFavorite) {
-                    button?.setImageResource(android.R.drawable.btn_star_big_on)
-                } else {
-                    button?.setImageResource(android.R.drawable.btn_star)
+        val count = minOf(total, maxIndicators)
+        val density = resources.displayMetrics.density
+        val size = (8 * density).toInt()
+        val margin = (2 * density).toInt()
+        repeat(count) { i ->
+            val dot = View(context).apply {
+                layoutParams = LinearLayout.LayoutParams(size, size).apply {
+                    setMargins(margin, 0, margin, 0)
                 }
-
-                // Set click listener
-                button?.setOnClickListener {
-                    toggleFavorite(i, it as ImageButton)
-                }
+                setBackgroundColor(if (i == currentIndex) Color.BLACK else Color.GRAY)
             }
-        }
-    }
-
-    private fun toggleFavorite(itemIndex: Int, button: ImageButton) {
-        // Make sure index is valid
-        if (itemIndex < recentItems.size) {
-            // Toggle favorite status
-            recentItems[itemIndex].isFavorite = !recentItems[itemIndex].isFavorite
-
-            // Update button appearance using system icons
-            if (recentItems[itemIndex].isFavorite) {
-                button.setImageResource(android.R.drawable.btn_star_big_on)
-                Toast.makeText(context, getString(R.string.added_to_favorites, recentItems[itemIndex].name), Toast.LENGTH_SHORT).show()
-            } else {
-                button.setImageResource(android.R.drawable.btn_star)
-                Toast.makeText(context, getString(R.string.removed_from_favorites, recentItems[itemIndex].name), Toast.LENGTH_SHORT).show()
-            }
-
-            // Here you would update the database with the new favorite status
+            container.addView(dot)
         }
     }
 }
