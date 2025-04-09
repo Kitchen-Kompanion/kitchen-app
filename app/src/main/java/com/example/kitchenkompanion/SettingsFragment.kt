@@ -4,16 +4,14 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.*
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 
 class SettingsFragment : Fragment() {
 
     private lateinit var userNameTextView: TextView
     private lateinit var editButton: ImageButton
-    private lateinit var backButton: ImageButton
+    private lateinit var backButton: TextView  // ✅ 변경됨
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,7 +23,7 @@ class SettingsFragment : Fragment() {
 
         userNameTextView = view.findViewById(R.id.userName)
         editButton = view.findViewById(R.id.editProfileButton)
-        backButton = view.findViewById(R.id.backButton)
+        backButton = view.findViewById(R.id.backButton)  // ✅ 여기도 문제 없음
 
         val sharedPrefs = requireContext().getSharedPreferences("settings_prefs", Context.MODE_PRIVATE)
         val savedName = sharedPrefs.getString("user_name", null)

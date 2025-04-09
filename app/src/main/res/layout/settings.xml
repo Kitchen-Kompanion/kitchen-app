@@ -20,15 +20,21 @@
             android:gravity="center_vertical"
             android:paddingBottom="24dp">
 
-            <ImageButton
+            <!-- 텍스트만 있는 백 버튼 -->
+            <TextView
                 android:id="@+id/backButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/back"
-                android:src="@android:drawable/ic_media_previous"
-                android:padding="4dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/back"
+                android:textColor="#2196F3"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="8dp"
+                android:layout_marginEnd="16dp" />
 
+            <!-- 가운데 정렬된 타이틀 -->
             <TextView
                 android:id="@+id/settingsTitle"
                 android:layout_width="0dp"
@@ -37,8 +43,9 @@
                 android:text="@string/app_title"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:gravity="center"/>
+                android:gravity="center" />
         </LinearLayout>
+
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
