@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +38,6 @@
 
         </LinearLayout>
 
-        <!-- Instructions -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +46,6 @@
             android:textColor="#757575"
             android:layout_marginBottom="16dp" />
 
-        <!-- Item List Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,7 +70,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Summary Card -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -162,7 +158,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Add Item Section (name + quantity only) -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -179,7 +174,6 @@
             android:layout_marginBottom="16dp"
             android:gravity="center_vertical">
 
-            <!-- Item Name Input -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="56dp"
@@ -201,7 +195,6 @@
                     android:paddingHorizontal="12dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Quantity Input -->
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="56dp"
@@ -223,7 +216,6 @@
                     android:paddingHorizontal="12dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Add Button (same height, same rounded look) -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_add_item"
                 android:layout_width="wrap_content"
@@ -237,10 +229,6 @@
                 android:paddingVertical="8dp" />
         </LinearLayout>
 
-
-
-
-        <!-- Action Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

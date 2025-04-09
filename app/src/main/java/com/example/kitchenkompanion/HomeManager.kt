@@ -134,7 +134,6 @@ object HomeManager {
             val today = Calendar.getInstance().time
             val expireDate = dateFormat.parse(foodItem.expireDate)
 
-            // Calculate days between dates
             val diff = expireDate.time - today.time
             return (diff / (1000 * 60 * 60 * 24)).toInt()
         } catch (e: Exception) {

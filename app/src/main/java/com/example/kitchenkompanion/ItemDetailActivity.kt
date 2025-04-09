@@ -28,7 +28,7 @@ class ItemDetailActivity : AppCompatActivity() {
         val expireEdit = findViewById<EditText>(R.id.edit_expire)
         val imageView = findViewById<ImageView>(R.id.detail_image)
 
-        // Set the initial values
+
         nameEdit.setText(item.name)
 
         ownerEdit.setText(item.owner)
@@ -37,11 +37,11 @@ class ItemDetailActivity : AppCompatActivity() {
         val imageResId = ImageHelper.getImageResId(item.name.lowercase())
         imageView.setImageResource(imageResId)
 
-        // Back Button
+
         findViewById<Button>(R.id.back_button).setOnClickListener {
             finish()
         }
-        // save button
+
         val saveButton = findViewById<Button>(R.id.btn_save)
         saveButton.setOnClickListener {
             val updatedItem = InventoryItem(

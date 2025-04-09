@@ -16,7 +16,6 @@ object InventoryManager {
     fun init(context: Context) {
         sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         loadInventory()
-        //sharedPrefs.edit().putBoolean("initialized", false).apply()
         val isInitialized = sharedPrefs.getBoolean("initialized", false)
 
         if (!isInitialized) {

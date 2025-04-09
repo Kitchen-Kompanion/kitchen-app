@@ -8,7 +8,6 @@
     android:background="#FFFFFF"
     tools:context=".InventoryFragment">
 
-    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +36,6 @@
             android:paddingStart="8dp"/>
     </LinearLayout>
 
-    <!-- Expiring Soon -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +50,6 @@
         android:layout_marginHorizontal="8dp"
         android:backgroundTint="#FFFFFF">
 
-        <!-- Section Title -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,7 +59,6 @@
             android:textColor="#D32F2F"
             android:paddingBottom="8dp" />
 
-        <!-- Horizontal list of items -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,8 +72,6 @@
         </HorizontalScrollView>
     </LinearLayout>
 
-
-    <!-- Scrollable Inventory List -->
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
@@ -92,7 +86,6 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <!-- Fruits & Vegetables Category -->
             <LinearLayout
                 android:layout_marginTop="6dp"
                 android:layout_width="match_parent"
@@ -142,7 +135,6 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- Pantry Items -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -187,8 +179,6 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- Frozen Items -->
-            <!-- Frozen Items -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -232,7 +222,6 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- Beverages -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -274,7 +263,7 @@
 
                 </LinearLayout>
             </HorizontalScrollView>
-            <!-- Dairy -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -313,12 +302,10 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/dairy_section"
                     android:orientation="horizontal">
-                    <!--<include layout="@layout/inventory_item"/> -->
 
                 </LinearLayout>
             </HorizontalScrollView>
 
-            <!-- Snacks -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

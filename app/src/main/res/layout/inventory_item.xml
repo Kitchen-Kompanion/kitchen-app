@@ -7,7 +7,6 @@
     android:layout_margin="4dp"
     android:background="@drawable/item_background">
 
-    <!-- Item Image -->
     <ImageView
         android:id="@+id/item_image"
         android:layout_width="100dp"
@@ -33,7 +32,6 @@
         android:backgroundTint="#4CAF50"
         android:background="@android:drawable/presence_online" />
 
-    <!-- Item Name -->
     <TextView
         android:id="@+id/item_name"
         android:layout_width="wrap_content"

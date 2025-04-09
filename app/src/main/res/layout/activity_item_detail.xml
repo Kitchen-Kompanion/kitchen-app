@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Back Button -->
+
         <Button
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
@@ -21,7 +21,6 @@
             android:textStyle="bold"
             android:layout_marginBottom="0dp"/>
 
-        <!-- item image-->
         <ImageView
             android:id="@+id/detail_image"
             android:layout_width="160dp"
@@ -31,7 +30,6 @@
             android:scaleType="centerCrop"
             android:src="@drawable/mango" />
 
-        <!-- Name -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -59,7 +57,6 @@
                 android:backgroundTint="#CCCCCC" />
         </LinearLayout>
 
-        <!-- Type -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,7 +83,6 @@
                 android:spinnerMode="dropdown" />
         </LinearLayout>
 
-        <!-- Owner -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +110,6 @@
                 android:backgroundTint="#CCCCCC" />
         </LinearLayout>
 
-        <!-- Count -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -143,7 +138,6 @@
                 android:backgroundTint="#CCCCCC" />
         </LinearLayout>
 
-        <!-- Expire Date -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

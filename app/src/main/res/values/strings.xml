@@ -1,9 +1,7 @@
 <resources>
-    <!-- App Info -->
     <string name="app_name">KitchenKompanion</string>
     <string name="app_title">Kitchen Kompanion</string>
 
-    <!-- Home screen -->
     <string name="home">Home</string>
     <string name="profile">Profile</string>
     <string name="settings">Settings</string>
@@ -14,33 +12,28 @@
     <string name="next_item">Next item</string>
     <string name="recently_added">Recently Added</string>
 
-    <!-- Toasts -->
     <string name="profile_toast">Profile</string>
     <string name="settings_toast">Settings</string>
     <string name="added_to_favorites">%1$s added to favorites</string>
     <string name="removed_from_favorites">%1$s removed from favorites</string>
 
-    <!-- Expiry Text -->
     <string name="expires_today">Expires Today!</string>
     <string name="one_day_left">1 Day Left</string>
     <string name="days_left_format">%d Days Left</string>
     <string name="no_expiring_items">No expiring items</string>
     <string name="add_items_to_track">Add items to track expiry</string>
 
-    <!-- Shopping List -->
     <string name="shopping_list_title">Kitchen Kompanion</string>
     <string name="items_count">Items: 10</string>
     <string name="items_count_format">Items: %1$d</string>
     <string name="shopping_instructions">Check items as you add them to your cart. Track your shopping progress below.</string>
     <string name="my_shopping_list">My Shopping List</string>
 
-    <!-- Items -->
     <string name="melon">Melon</string>
     <string name="soup">Soup</string>
     <string name="mango">Mango</string>
     <string name="banana">Banana</string>
 
-    <!-- Item descriptions -->
     <string name="melon_image_description">Image of a melon</string>
     <string name="soup_image_description">Image of soup</string>
     <string name="mango_image_description">Image of a mango</string>
@@ -52,19 +45,16 @@
     <string name="mushroom_image">Mushroom image</string>
     <string name="mushroom_4_days_left">Mushroom - 4 days left</string>
 
-    <!-- Quantities -->
     <string name="quantity_1">Qty: 1</string>
     <string name="quantity_3">Qty: 3</string>
     <string name="quantity_three">Qty: 3</string>
 
-    <!-- Prices -->
     <string name="price_melon">$15.99</string>
     <string name="price_soup">$4.50</string>
     <string name="price_mango">$3.99</string>
     <string name="price_banana">$2.99</string>
     <string name="total_price">$27.47</string>
 
-    <!-- Summary -->
     <string name="shopping_summary">Shopping Summary</string>
     <string name="total_items">Total items:</string>
     <string name="checked_items">Checked items:</string>
@@ -72,14 +62,12 @@
     <string name="ten">10</string>
     <string name="zero">0</string>
 
-    <!-- Add Item -->
     <string name="add_new_item">Add New Item</string>
     <string name="item_name_hint">Enter item name</string>
     <string name="add">Add</string>
     <string name="clear_all">Delete Item</string>
     <string name="complete_shopping">Complete Shopping</string>
 
-    <!-- Recipe Section -->
     <string name="recipes">Recipes</string>
     <string name="recipe_instructions">Filter recipes by your preference. When you find one you like click on the recipe for more details.</string>
     <string name="avacado_toast">Avocado Toast</string>
@@ -93,7 +81,6 @@
     <string name="microwave_oatmeal">Microwave Oatmeal</string>
     <string name="microwave_oatmeal_recipe">Combine rolled oats, water or milk, and a pinch of salt in a microwave-safe bowl.\nMicrowave for 2-3 minutes, stirring occasionally.\nTop with fruit and nuts.</string>
 
-    <!-- Recipe filters -->
     <string name="vegetarian">Vegetarian</string>
     <string name="beef">Beef</string>
     <string name="chicken">Chicken</string>
@@ -104,7 +91,6 @@
     <string name="breakfast">Breakfast</string>
     <string name="snack">Snack</string>
 
-    <!-- Settings Section -->
     <string name="favorites">Favorites</string>
     <string name="fav_peanuts">Peanuts</string>
     <string name="fav_almonds">Almonds</string>
@@ -118,7 +104,6 @@
     <string name="an">AN</string>
     <string name="snwined">SNWINED</string>
 
-    <!-- Settings Fragment Texts -->
     <string name="back">Back</string>
     <string name="manage_account">Manage your account, update your name, email, or password.</string>
     <string name="notifications">Notifications</string>

@@ -67,7 +67,6 @@
             android:layout_marginBottom="24dp"
             android:background="@android:drawable/edit_text" />
 
-        <!-- button -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

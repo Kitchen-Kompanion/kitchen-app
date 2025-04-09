@@ -83,7 +83,6 @@ class InventoryFragment : Fragment() {
         val beverageSection = view.findViewById<LinearLayout>(R.id.beverages_section)
         val snackSection = view.findViewById<LinearLayout>(R.id.snacks_section)
 
-        // remove original views
         expireSection.removeAllViews()
         fruitSection.removeAllViews()
         dairySection.removeAllViews()
@@ -92,8 +91,6 @@ class InventoryFragment : Fragment() {
         beverageSection.removeAllViews()
         snackSection.removeAllViews()
 
-
-        // Count items
 
         val uniqueItemCount = inventoryList.size
         view.findViewById<TextView>(R.id.tv_selected_items).text = "Items: $uniqueItemCount"
@@ -110,7 +107,7 @@ class InventoryFragment : Fragment() {
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            val marginInDp = (12 * resources.displayMetrics.density).toInt() // 12dp
+            val marginInDp = (12 * resources.displayMetrics.density).toInt()
             params.setMargins(0, 0, marginInDp, 0)
             itemView.layoutParams = params
 
@@ -139,7 +136,7 @@ class InventoryFragment : Fragment() {
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            val marginInDp = (12 * resources.displayMetrics.density).toInt() // 12dp
+            val marginInDp = (12 * resources.displayMetrics.density).toInt()
             params.setMargins(0, 0, marginInDp, 0)
             itemView.layoutParams = params
 
@@ -186,7 +183,6 @@ class InventoryFragment : Fragment() {
         val itemCount = dialogView.findViewById<EditText>(R.id.edit_count)
         val expireDate = dialogView.findViewById<EditText>(R.id.edit_expire_date)
 
-        // Spinner 옵션 추가
         val types = arrayOf("Dairy", "Fruits", "Pantry", "Frozen", "Beverages", "Snacks")
         itemType.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, types)
 
@@ -194,7 +190,6 @@ class InventoryFragment : Fragment() {
             .setView(dialogView)
             .create()
 
-        // 버튼 리스너 설정
         val btnCancel = dialogView.findViewById<Button>(R.id.btn_cancel)
         val btnAdd = dialogView.findViewById<Button>(R.id.btn_add)
 

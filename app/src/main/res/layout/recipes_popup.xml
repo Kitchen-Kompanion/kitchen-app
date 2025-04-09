@@ -26,7 +26,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Enhanced Recipe Image with Overlay and Title -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="220dp">
@@ -38,7 +37,6 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/melon" />
 
-                <!-- Gradient overlay for better text visibility -->
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
@@ -60,7 +58,6 @@
                     android:shadowRadius="3" />
             </RelativeLayout>
 
-            <!-- Enhanced Recipe Tags -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +83,6 @@
                     android:textColor="#333333"/>
             </LinearLayout>
 
-            <!-- Ingredients section with improved styling -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,7 +102,6 @@
                 android:background="#F9F9F9"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Enhanced Instructions Section -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,7 +121,6 @@
                 android:background="#F9F9F9"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Add to Shopping List Button -->
             <Button
                 android:id="@+id/btnAddToShoppingList"
                 android:layout_width="match_parent"

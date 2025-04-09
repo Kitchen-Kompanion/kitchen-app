@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +40,6 @@
                 android:padding="4dp" />
         </LinearLayout>
 
-        <!-- Expiring Soon Section -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,12 +117,11 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="16dp"
                     android:orientation="horizontal">
-                    <!-- Dots will be added programmatically -->
+
                 </LinearLayout>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Expired Items Section -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -205,7 +202,6 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Low Stock Items Section -->
         <androidx.cardview.widget.CardView
             android:id="@+id/lowStockCard"
             android:layout_width="match_parent"
@@ -221,7 +217,6 @@
                 android:padding="16dp"
                 android:background="#F5F5F5">
 
-                <!-- Section Title -->
                 <TextView
                     android:id="@+id/lowStockTitle"
                     android:layout_width="wrap_content"
@@ -232,7 +227,6 @@
                     android:textStyle="bold"
                     android:paddingBottom="12dp" />
 
-                <!-- Horizontal Scrollable Items -->
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -246,7 +240,7 @@
                 </HorizontalScrollView>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-        <!--  Recipes -->
+
         <TextView
             android:id="@+id/suggested_recipes_title"
             android:layout_width="wrap_content"
@@ -258,7 +252,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp" />
 
-        <!-- Grid -->
+
         <GridLayout
             android:id="@+id/suggested_recipes_grid"
             android:layout_width="match_parent"
@@ -271,7 +265,7 @@
             android:alignmentMode="alignMargins"
             android:layout_marginBottom="24dp">
 
-            <!--Card 1 -->
+
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -302,7 +296,6 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Card 2 -->
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

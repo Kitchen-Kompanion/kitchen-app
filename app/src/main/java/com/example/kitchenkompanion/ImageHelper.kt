@@ -1,4 +1,3 @@
-// 파일명: ImageHelper.kt
 package com.example.kitchenkompanion
 
 import com.example.kitchenkompanion.R

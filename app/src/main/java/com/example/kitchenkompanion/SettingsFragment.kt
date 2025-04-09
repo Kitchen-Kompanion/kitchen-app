@@ -38,7 +38,7 @@ class SettingsFragment : Fragment() {
         }
 
         backButton.setOnClickListener {
-            parentFragmentManager.popBackStack()  // 👈 Go back to HomeFragment
+            parentFragmentManager.popBackStack()
             requireActivity().findViewById<View>(R.id.fragmentOverlayContainer).visibility = View.GONE
         }
     }
