@@ -1,5 +1,6 @@
 package com.example.kitchenkompanion
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -50,13 +51,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupTopButtons(view)
         loadItems(view)
-        setupRecentItemsList(view)
+        setupLowStockItems(view)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
-        view?.let { loadItems(it) }
+        view?.let { loadItems(it)
+            setupLowStockItems(it)}
     }
 
     private fun setupTopButtons(view: View) {
@@ -163,66 +165,41 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setupRecentItemsList(view: View) {
-        // Check if list is empty
-        if (recentItems.isEmpty()) {
-            // Hide the section or show empty state
-            val recentItemsCard = view.findViewById<View>(R.id.recentItemsCard)
-            recentItemsCard?.visibility = View.GONE
-            return
-        }
+    private fun setupLowStockItems(view: View) {
+        val lowStockContainer = view.findViewById<LinearLayout>(R.id.low_stock_items_container)
+        lowStockContainer.removeAllViews()
 
-        // Initialize favorite buttons with correct state
-        setupFavoriteButtons(view)
-    }
+        val lowStockItems = InventoryManager.getItems().filter { it.count <= 2 }
 
-    private fun setupFavoriteButtons(view: View) {
-        // Set up favorite buttons with initial states
-        val favoriteButtons = listOf(
-            view.findViewById<ImageButton>(R.id.favoriteItem1),
-            view.findViewById<ImageButton>(R.id.favoriteItem2),
-            view.findViewById<ImageButton>(R.id.favoriteItem3),
-            view.findViewById<ImageButton>(R.id.favoriteItem4),
-            view.findViewById<ImageButton>(R.id.favoriteItem5),
-            view.findViewById<ImageButton>(R.id.favoriteItem6)
-        )
+        val inflater = layoutInflater
+        for (item in lowStockItems) {
+            val itemView = inflater.inflate(R.layout.inventory_item, lowStockContainer, false)
 
-        // Initialize buttons with correct favorite state
-        for (i in recentItems.indices) {
-            if (i < favoriteButtons.size) {
-                val button = favoriteButtons[i]
+            itemView.findViewById<TextView>(R.id.item_name).text = item.name
+            itemView.findViewById<TextView>(R.id.item_count).text = item.count.toString()
+            itemView.findViewById<ImageView>(R.id.item_image)
+                .setImageResource(ImageHelper.getImageResId(item.name.lowercase()))
 
-                // Set initial button state
-                if (recentItems[i].isFavorite) {
-                    button?.setImageResource(android.R.drawable.btn_star_big_on)
-                } else {
-                    button?.setImageResource(android.R.drawable.btn_star)
-                }
-
-                // Set click listener
-                button?.setOnClickListener {
-                    toggleFavorite(i, it as ImageButton)
-                }
-            }
-        }
-    }
-
-    private fun toggleFavorite(itemIndex: Int, button: ImageButton) {
-        // Make sure index is valid
-        if (itemIndex < recentItems.size) {
-            // Toggle favorite status
-            recentItems[itemIndex].isFavorite = !recentItems[itemIndex].isFavorite
-
-            // Update button appearance using system icons
-            if (recentItems[itemIndex].isFavorite) {
-                button.setImageResource(android.R.drawable.btn_star_big_on)
-                Toast.makeText(context, getString(R.string.added_to_favorites, recentItems[itemIndex].name), Toast.LENGTH_SHORT).show()
-            } else {
-                button.setImageResource(android.R.drawable.btn_star)
-                Toast.makeText(context, getString(R.string.removed_from_favorites, recentItems[itemIndex].name), Toast.LENGTH_SHORT).show()
+            itemView.setOnClickListener {
+                val intent = Intent(requireContext(), ItemDetailActivity::class.java)
+                intent.putExtra("item", item)
+                startActivity(intent)
             }
 
-            // Here you would update the database with the new favorite status
+            val params = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            params.setMargins(12, 0, 12, 0)
+            itemView.layoutParams = params
+
+            lowStockContainer.addView(itemView)
         }
     }
+
+
+
+
+
+
 }

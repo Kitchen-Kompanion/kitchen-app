@@ -215,243 +215,136 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Recently Added Section -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/recently_added"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
+        <!-- Low Stock Items Section -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/recentItemsCard"
+            android:id="@+id/lowStockCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="4dp">
+            app:cardCornerRadius="12dp"
+            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:background="#F0F0F0">
+                android:padding="16dp"
+                android:background="#F5F5F5">
 
-                <!-- Item 1 -->
-                <LinearLayout
+                <!-- Section Title -->
+                <TextView
+                    android:id="@+id/lowStockTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🧃 Low Stock Items"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:paddingBottom="12dp" />
+
+                <!-- Horizontal Scrollable Items -->
+                <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true">
+                    android:scrollbars="none">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/melon"
-                        android:contentDescription="@string/melon_image" />
-
-                    <TextView
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:id="@+id/low_stock_items_container"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:text="@string/melon_5_days_left"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
-
-                    <ImageButton
-                        android:id="@+id/favoriteItem1"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/favorite"
-                        android:src="@android:drawable/btn_star" />
-                </LinearLayout>
-
-                <!-- Item 2 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/carrot"
-                        android:contentDescription="@string/carrot_image" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:text="@string/carrot_10_days_left"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
-
-                    <ImageButton
-                        android:id="@+id/favoriteItem2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/favorite"
-                        android:src="@android:drawable/btn_star" />
-                </LinearLayout>
-
-                <!-- Item 3 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/bread"
-                        android:contentDescription="@string/mushroom_image" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:text="bread - 4 days left"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
-
-                    <ImageButton
-                        android:id="@+id/favoriteItem3"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/favorite"
-                        android:src="@android:drawable/btn_star" />
-                </LinearLayout>
-                <!-- Item 3 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/watermelon"
-                        android:contentDescription="@string/mushroom_image" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:text="watermelon - 6 days left"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
-
-                    <ImageButton
-                        android:id="@+id/favoriteItem4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/favorite"
-                        android:src="@android:drawable/btn_star" />
-                </LinearLayout>
-                <!-- Item 3 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/tomato"
-                        android:contentDescription="@string/mushroom_image" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:text="tomato - 2 days left"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
-
-                    <ImageButton
-                        android:id="@+id/favoriteItem5"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/favorite"
-                        android:src="@android:drawable/btn_star" />
-                </LinearLayout>
-                <!-- Item 3 -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/orange"
-                        android:contentDescription="@string/mushroom_image" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="16dp"
-                        android:layout_weight="1"
-                        android:text="orange - 4 days left"
-                        android:textColor="#000000"
-                        android:textSize="16sp" />
-
-                    <ImageButton
-                        android:id="@+id/favoriteItem6"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="@string/favorite"
-                        android:src="@android:drawable/btn_star" />
-                </LinearLayout>
+                        android:orientation="horizontal" />
+                </HorizontalScrollView>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+        <!--  Recipes -->
+        <TextView
+            android:id="@+id/suggested_recipes_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🍽️ Suggested Recipes"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp" />
 
-        <View
+        <!-- Grid -->
+        <GridLayout
+            android:id="@+id/suggested_recipes_grid"
             android:layout_width="match_parent"
-            android:layout_height="70dp" />
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:columnOrderPreserved="false"
+            android:rowOrderPreserved="false"
+            android:useDefaultMargins="true"
+            android:alignmentMode="alignMargins"
+            android:layout_marginBottom="24dp">
+
+            <!--Card 1 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/pasta" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tomato Pasta"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                        android:padding="12dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Card 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/avocado_toast" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Fruit Smoothie"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                        android:padding="12dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+
     </LinearLayout>
+
 </ScrollView>

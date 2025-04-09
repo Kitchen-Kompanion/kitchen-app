@@ -16,7 +16,7 @@ object InventoryManager {
     fun init(context: Context) {
         sharedPrefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
         loadInventory()
-
+        //sharedPrefs.edit().putBoolean("initialized", false).apply()
         val isInitialized = sharedPrefs.getBoolean("initialized", false)
 
         if (!isInitialized) {
@@ -25,17 +25,25 @@ object InventoryManager {
                     InventoryItem("Apple", "Kyumin", "Fruits", 5, "2025-04-15"),
                     InventoryItem("Milk", "Kyumin", "Dairy", 2, "2025-04-10"),
                     InventoryItem("Bread", "Kyumin", "Pantry", 1, "2025-04-08"),
-                    InventoryItem("Ice Cream", "Kyumin", "Frozen", 3, "2025-04-20"),
+                    InventoryItem("Butter", "Kyumin", "Frozen", 3, "2025-04-20"),
                     InventoryItem("Chips", "Kyumin", "Snacks", 4, "2025-07-01"),
                     InventoryItem("Water", "Kyumin", "Beverages", 6, "2026-01-01"),
-                    InventoryItem("soda", "Kyumin", "Beverages", 6, "2026-05-01")
-
+                    InventoryItem("Soda", "Kyumin", "Beverages", 6, "2026-05-01"),
+                    InventoryItem("Tomato", "Kyumin", "Fruits", 1, "2025-04-03"),
+                    InventoryItem("Yogurt", "Kyumin", "Dairy", 2, "2025-04-05"),
+                    InventoryItem("Cheese", "Kyumin", "Dairy", 5, "2025-04-18"),
+                    InventoryItem("Banana", "Kyumin", "Fruits", 1, "2025-04-02"),
+                    InventoryItem("Frozen pizza", "Kyumin", "Frozen", 2, "2025-08-01"),
+                    InventoryItem("Cereal", "Kyumin", "Pantry", 3, "2025-06-15"),
+                    InventoryItem("Coffee", "Kyumin", "Beverages", 1, "2025-04-06")
                 )
             )
+
             saveInventory()
 
             sharedPrefs.edit().putBoolean("initialized", true).apply()
         } else {
+
             loadInventory()
         }
     }
@@ -73,5 +81,6 @@ object InventoryManager {
     fun clearAll() {
         inventoryList.clear()
         saveInventory()
+        sharedPrefs.edit().clear().apply()
     }
 }
