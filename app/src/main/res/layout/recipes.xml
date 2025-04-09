@@ -17,43 +17,43 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
             android:gravity="center_vertical"
-            android:paddingBottom="16dp"
-            android:layout_marginTop="16dp">
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
 
             <TextView
                 android:id="@+id/appTitle"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/app_title"
-                android:textStyle="bold"
-                android:textSize="22sp"/>
+                android:textSize="22sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <!-- Recipes title and instructions -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="12dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/recipes"
+                android:textColor="#4CAF50"
                 android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="#4CAF50" />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="@string/recipe_instructions"
-                android:textSize="16sp"
                 android:textColor="#757575"
-                android:layout_marginTop="4dp" />
+                android:textSize="16sp" />
         </LinearLayout>
 
         <HorizontalScrollView
@@ -157,7 +157,6 @@
             </HorizontalScrollView>
 
         </HorizontalScrollView>
-
 
 
         <ScrollView
@@ -424,6 +423,153 @@
                             android:ellipsize="end"
                             android:maxLines="3"
                             android:text="@string/microwave_oatmeal_recipe"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#F5F5F5"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/img6"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:background="#EEEEEE"
+                        android:contentDescription="Stir fry image"
+                        android:padding="8dp"
+                        android:src="@drawable/vegetable_stir_fry" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvName6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/vegetable_stir_fry"
+                            android:textColor="#4CAF50"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDescription6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+                            android:text="@string/vegetable_stir_fry_recipe"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#F5F5F5"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/img7"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:background="#EEEEEE"
+                        android:contentDescription="Chicken curry image"
+                        android:padding="8dp"
+                        android:src="@drawable/chicken_curry" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvName7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/chicken_curry"
+                            android:textColor="#4CAF50"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDescription7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+                            android:text="@string/chicken_curry_recipe"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#F5F5F5"
+                    android:clickable="true"
+                    android:elevation="2dp"
+                    android:focusable="true"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/img8"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:background="#EEEEEE"
+                        android:contentDescription="beef stew image"
+                        android:padding="8dp"
+                        android:src="@drawable/beef_stew" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvName8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/beef_stew"
+                            android:textColor="#4CAF50"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDescription8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ellipsize="end"
+                            android:maxLines="3"
+                            android:text="@string/beef_stew_recipe"
                             android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>

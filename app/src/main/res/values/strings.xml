@@ -95,6 +95,12 @@
     <string name="caprese_salad_recipe">Slice fresh mozzarella and ripe tomatoes. \nArrange them on a plate, alternating slices. \nDrizzle with olive oil, balsamic glaze, and sprinkle with fresh basil leaves.</string>
     <string name="microwave_oatmeal">Microwave Oatmeal</string>
     <string name="microwave_oatmeal_recipe">Combine rolled oats, water or milk, and a pinch of salt in a microwave-safe bowl.\nMicrowave for 2-3 minutes, stirring occasionally.\nTop with fruit and nuts.</string>
+    <string name="vegetable_stir_fry">Vegetable Stir fry</string>
+    <string name="vegetable_stir_fry_recipe">Sauté: In a wok or large skillet add 1 Tablespoon olive oil over medium high heat. Add bell pepper, peas, carrots, mushrooms, broccoli, baby corn, and water chestnuts. Sauté 2-3 minutes until veggies are almost tender.\nWhisk: In a small bowl, whisk together soy sauce, garlic, brown sugar, sesame oil, chicken broth, and cornstarch.\nMix: Pour over veggies and cook until the sauce has thickened.\nGarnish: add chopped green onions and sesame seeds if desired.</string>
+    <string name="chicken_curry">Chicken Curry</string>
+    <string name="chicken_curry_recipe">Heat olive oil in a skillet over medium heat. Sauté onion until lightly browned.\nStir in garlic, curry powder, cinnamon, paprika, bay leaf, ginger, sugar, and salt. Continue stirring for 2 minutes.\nAdd chicken pieces, tomato paste, yogurt, and coconut milk. Bring to a boil, reduce heat, and simmer for 20-25 minutes.\nRemove bay leaf, and stir in lemon juice and cayenne pepper. Simmer 5 more minutes.\nServe hot and enjoy!</string>
+    <string name="beef_stew">Beef Stew</string>
+    <string name="beef_stew_recipe">Prep:\n1. Cut beef into small chunks, along with potatoes and carrots\n2. Season beef chunks with salt and pepper, then sprinkle with flour and toss to coat\n\nCooking:\n1. Set Instant Pot to sauté mode. Add oil and brown beef for 3-4 minutes. Remove and set aside\n2. Add onions and garlic to pot. Cook for 2-3 minutes until brown and soft\n3. Pour in broth to deglaze, scraping up brown bits from bottom. Stir for 1 minute\n4. Add tomato paste, seasoning, and Worcestershire sauce. Stir for 2 minutes\n5. Return beef to pot, top with potatoes and carrots. Add bay leaf\n\nPressure Cooking:\n1. Close lid, set steam release valve to seal\n2. Cook on high pressure for 35 minutes\n3. Allow 10 minute natural release before opening\n4. Remove bay leaf before serving</string>
 
     <!--  Filter cb's  -->
     <string name="vegetarian">Vegetarian</string>
