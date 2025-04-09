@@ -24,7 +24,8 @@ object ShoppingManager {
                     ShoppingItem("Watermelon", 3, 15.99, false),
                     ShoppingItem("Tomato", 3, 4.50, false),
                     ShoppingItem("Mango", 1, 3.99, false),
-                    ShoppingItem("Banana", 3, 2.99, false)
+                    ShoppingItem("Banana", 3, 2.99, false),
+                    ShoppingItem("Milk", 3, PriceHelper.getPrice("Milk"), false)
                 )
             )
             saveShoppingList()
