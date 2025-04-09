@@ -62,12 +62,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupTopButtons(view: View) {
-        view.findViewById<ImageButton>(R.id.profileButton)?.setOnClickListener {
-            Toast.makeText(context, R.string.profile_toast, Toast.LENGTH_SHORT).show()
-        }
         view.findViewById<ImageButton>(R.id.settingsButton)?.setOnClickListener {
-            Toast.makeText(context, R.string.settings_toast, Toast.LENGTH_SHORT).show()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentOverlayContainer, SettingsFragment())
+                .addToBackStack(null)
+                .commit()
+
+            requireActivity().findViewById<View>(R.id.fragmentOverlayContainer).visibility = View.VISIBLE
         }
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
