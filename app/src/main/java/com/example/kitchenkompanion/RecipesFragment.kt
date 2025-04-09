@@ -94,6 +94,60 @@ class RecipesFragment : Fragment() {
             ),
             listOf("Vegetarian", "Breakfast"),
             R.drawable.oatmeal
+        ),
+        RecipeItem(
+            "Vegetable Stir Fry",
+            "Sauté: In a wok or large skillet add 1 Tablespoon olive oil over medium high heat. Add bell pepper, peas, carrots, mushrooms, broccoli, baby corn, and water chestnuts. Sauté 2-3 minutes until veggies are almost tender.\nWhisk: In a small bowl, whisk together soy sauce, garlic, brown sugar, sesame oil, chicken broth, and cornstarch.\nMix: Pour over veggies and cook until the sauce has thickened.\nGarnish: add chopped green onions and sesame seeds if desired.",
+            listOf("2 cups mixed vegetables", "1 tbsp olive oil", "2 cloves garlic", "1 tsp ginger", "2 tbsp soy sauce", "1 cup cooked rice"),
+            listOf("Vegetarian", "Halal", "Kosher"),
+            R.drawable.vegetable_stir_fry
+        ),
+        RecipeItem(
+            name = "Chicken Curry",
+            description = "Heat olive oil in a skillet over medium heat. Sauté onion until lightly browned.\nStir in garlic, curry powder, cinnamon, paprika, bay leaf, ginger, sugar, and salt. Continue stirring for 2 minutes.\nAdd chicken pieces, tomato paste, yogurt, and coconut milk. Bring to a boil, reduce heat, and simmer for 20-25 minutes.\nRemove bay leaf, and stir in lemon juice and cayenne pepper. Simmer 5 more minutes.\nServe hot and enjoy!",
+            ingredients = listOf(
+                "3 tbsp olive oil",
+                "1 small onion, chopped",
+                "2 cloves garlic, minced",
+                "3 tbsp curry powder",
+                "1 tsp ground cinnamon",
+                "1 tsp paprika",
+                "1 bay leaf",
+                "½ tsp grated fresh ginger",
+                "½ tsp white sugar",
+                "Salt to taste",
+                "2 skinless, boneless chicken breasts (cut bite-size)",
+                "1 tbsp tomato paste",
+                "1 cup plain yogurt",
+                "¾ cup coconut milk",
+                "½ lemon, juiced",
+                "½ tsp cayenne pepper"
+            ),
+            tags = listOf("Chicken", "Halal", "Dinner"),
+            img = R.drawable.chicken_curry
+        ),
+        RecipeItem(
+            name = "Instant Pot Beef Stew",
+            description = "Prep:\n1. Cut beef into small chunks, along with potatoes and carrots\n2. Season beef chunks with salt and pepper, then sprinkle with flour and toss to coat\n\nCooking:\n1. Set Instant Pot to sauté mode. Add oil and brown beef for 3-4 minutes. Remove and set aside\n2. Add onions and garlic to pot. Cook for 2-3 minutes until brown and soft\n3. Pour in broth to deglaze, scraping up brown bits from bottom. Stir for 1 minute\n4. Add tomato paste, seasoning, and Worcestershire sauce. Stir for 2 minutes\n5. Return beef to pot, top with potatoes and carrots. Add bay leaf\n\nPressure Cooking:\n1. Close lid, set steam release valve to seal\n2. Cook on high pressure for 35 minutes\n3. Allow 10 minute natural release before opening\n4. Remove bay leaf before serving",
+            ingredients = listOf(
+                "2 lbs beef chuck (cut into chunks)",
+                "1 tbsp salt",
+                "1 tsp black pepper",
+                "¼ cup all-purpose flour",
+                "2 tbsp olive oil",
+                "1 large onion (chopped)",
+                "4 cloves garlic (minced)",
+                "4 cups beef broth",
+                "2 tbsp tomato paste",
+                "1 tbsp Worcestershire sauce",
+                "1 tsp thyme",
+                "1 tsp rosemary",
+                "4 medium potatoes (cubed)",
+                "3 carrots (chopped)",
+                "1 bay leaf"
+            ),
+            tags = listOf("Beef", "Dinner", "Comfort Food"),
+            img = R.drawable.beef_stew
         )
     )
 
@@ -130,7 +184,11 @@ class RecipesFragment : Fragment() {
             view.findViewById<LinearLayout>(R.id.ll2),
             view.findViewById<LinearLayout>(R.id.ll3),
             view.findViewById<LinearLayout>(R.id.ll4),
-            view.findViewById<LinearLayout>(R.id.ll5)
+            view.findViewById<LinearLayout>(R.id.ll5),
+            view.findViewById<LinearLayout>(R.id.ll6),
+            view.findViewById<LinearLayout>(R.id.ll7),
+            view.findViewById<LinearLayout>(R.id.ll8),
+
         ).forEachIndexed { index, layout ->
             layout?.setOnClickListener {
                 if (index < filteredRecipes.size) {
@@ -191,8 +249,11 @@ class RecipesFragment : Fragment() {
             view?.findViewById<LinearLayout>(R.id.ll2),
             view?.findViewById<LinearLayout>(R.id.ll3),
             view?.findViewById<LinearLayout>(R.id.ll4),
-            view?.findViewById<LinearLayout>(R.id.ll5)
-        )
+            view?.findViewById<LinearLayout>(R.id.ll5),
+            view?.findViewById<LinearLayout>(R.id.ll6),
+            view?.findViewById<LinearLayout>(R.id.ll7),
+            view?.findViewById<LinearLayout>(R.id.ll8),
+            )
 
         recipeLayouts.forEach { it?.visibility = View.GONE }
 
@@ -238,6 +299,24 @@ class RecipesFragment : Fragment() {
                     it.findViewById<TextView>(R.id.tvName5)?.text = recipeItem.name
                     it.findViewById<TextView>(R.id.tvDescription5)?.text = recipeItem.description
                     it.findViewById<ImageView>(R.id.img5)?.setImageResource(recipeItem.img)
+                }
+
+                R.id.ll6 -> {
+                    it.findViewById<TextView>(R.id.tvName6)?.text = recipeItem.name
+                    it.findViewById<TextView>(R.id.tvDescription6)?.text = recipeItem.description
+                    it.findViewById<ImageView>(R.id.img6)?.setImageResource(recipeItem.img)
+                }
+
+                R.id.ll7 -> {
+                    it.findViewById<TextView>(R.id.tvName7)?.text = recipeItem.name
+                    it.findViewById<TextView>(R.id.tvDescription7)?.text = recipeItem.description
+                    it.findViewById<ImageView>(R.id.img7)?.setImageResource(recipeItem.img)
+                }
+
+                R.id.ll8 -> {
+                    it.findViewById<TextView>(R.id.tvName8)?.text = recipeItem.name
+                    it.findViewById<TextView>(R.id.tvDescription8)?.text = recipeItem.description
+                    it.findViewById<ImageView>(R.id.img8)?.setImageResource(recipeItem.img)
                 }
 
                 else -> {return}
