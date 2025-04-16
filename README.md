@@ -30,8 +30,8 @@ Kitchen Kompanion is an Android app designed and developed as part of a Human-Co
 
 ## Key Features
 
-| Tab | HCI-Focused Description | Status |
-|-----|------------------------|--------|
+| Tab | HCI-Focused Description |
+|-----|------------------------|
 | **Home** | Simple dashboard for fast access, summary of expiring/expired items, and low-stock alerts |
 | **Inventory** | Categorized, scrollable lists with search; add/edit/delete via dialogs; visual item cues |
 | **Shopping** | Easy list creation with quantity and price, bulk actions, feedback for completed purchases |
