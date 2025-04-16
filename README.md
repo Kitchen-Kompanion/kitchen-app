@@ -1,4 +1,4 @@
-# Kitchen Kompanion 🍳
+# Kitchen Kompanion
 
 *A CMSC434 Human-Computer Interaction (HCI) project for efficient, user-friendly kitchen management and meal planning.*
 
@@ -62,8 +62,5 @@ Kitchen Kompanion is an Android app designed and developed as part of a Human-Co
 - Brandon Chen
 
 ---
-
-## Screenshots
-*Coming soon!*
 
 ---
