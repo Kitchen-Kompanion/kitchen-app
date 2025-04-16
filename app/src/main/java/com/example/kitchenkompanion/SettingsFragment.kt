@@ -11,7 +11,7 @@ class SettingsFragment : Fragment() {
 
     private lateinit var userNameTextView: TextView
     private lateinit var editButton: ImageButton
-    private lateinit var backButton: TextView  // ✅ 변경됨
+    private lateinit var backButton: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +23,7 @@ class SettingsFragment : Fragment() {
 
         userNameTextView = view.findViewById(R.id.userName)
         editButton = view.findViewById(R.id.editProfileButton)
-        backButton = view.findViewById(R.id.backButton)  // ✅ 여기도 문제 없음
+        backButton = view.findViewById(R.id.backButton)
 
         val sharedPrefs = requireContext().getSharedPreferences("settings_prefs", Context.MODE_PRIVATE)
         val savedName = sharedPrefs.getString("user_name", null)
