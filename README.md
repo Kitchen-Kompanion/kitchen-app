@@ -14,7 +14,7 @@ Kitchen Kompanion is an Android app designed and developed as part of a Human-Co
 
 - **User-Centered Approach:**
   - We did informal user interviews and observations to identify pain in mango kitchens (e.g., goods, food waste, difficulty walking fixtures).
-  - The most important tabs in the app (home, stock, shopping, food, settings) reflect real user features and mental models.
+  - The most important tabs in the app (home, inventory, shopping, food, settings) reflect real user features and mental models.
 
 - **Interaction Design:**
   - Large, clearly marked buttons and intuitive navigation reduce barriers to users for the first time.
